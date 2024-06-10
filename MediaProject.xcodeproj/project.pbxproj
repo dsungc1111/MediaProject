@@ -18,6 +18,8 @@
 		8BD646AF2C16EED2001819B5 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646AE2C16EED2001819B5 /* Protocol.swift */; };
 		8BD646B22C16F816001819B5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646B12C16F816001819B5 /* UIView+Extension.swift */; };
 		8BD646B62C1715F2001819B5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BD646B52C1715F2001819B5 /* .gitignore */; };
+		8BD646B82C171C93001819B5 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646B72C171C93001819B5 /* APIKey.swift */; };
+		8BD646BB2C171E8C001819B5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646BA2C171E8C001819B5 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,7 @@
 		8BD646AE2C16EED2001819B5 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		8BD646B12C16F816001819B5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		8BD646B52C1715F2001819B5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8BD646B72C171C93001819B5 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BD646BB2C171E8C001819B5 /* Kingfisher in Frameworks */,
 				8BD646A72C16EA36001819B5 /* SnapKit in Frameworks */,
 				8BD646AA2C16EA40001819B5 /* Alamofire in Frameworks */,
 			);
@@ -76,6 +80,7 @@
 				8BD6469C2C16E672001819B5 /* LaunchScreen.storyboard */,
 				8BD6469F2C16E672001819B5 /* Info.plist */,
 				8BD646AB2C16EB3C001819B5 /* MediaTableViewCell.swift */,
+				8BD646B72C171C93001819B5 /* APIKey.swift */,
 			);
 			path = MediaProject;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			packageProductDependencies = (
 				8BD646A62C16EA36001819B5 /* SnapKit */,
 				8BD646A92C16EA40001819B5 /* Alamofire */,
+				8BD646BA2C171E8C001819B5 /* Kingfisher */,
 			);
 			productName = MediaProject;
 			productReference = 8BD6468E2C16E671001819B5 /* MediaProject.app */;
@@ -147,6 +153,7 @@
 			packageReferences = (
 				8BD646A52C16EA36001819B5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8BD646A82C16EA40001819B5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				8BD646B92C171E8C001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 8BD6468F2C16E671001819B5 /* Products */;
 			projectDirPath = "";
@@ -176,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD646B22C16F816001819B5 /* UIView+Extension.swift in Sources */,
+				8BD646B82C171C93001819B5 /* APIKey.swift in Sources */,
 				8BD646AF2C16EED2001819B5 /* Protocol.swift in Sources */,
 				8BD646962C16E671001819B5 /* MediaViewController.swift in Sources */,
 				8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */,
@@ -417,6 +425,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		8BD646B92C171E8C001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -429,6 +445,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8BD646A82C16EA40001819B5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		8BD646BA2C171E8C001819B5 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BD646B92C171E8C001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
