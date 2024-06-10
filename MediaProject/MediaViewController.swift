@@ -26,10 +26,11 @@ struct Results: Decodable {
     //let release_date: String
 //    let original_title: String
 //    let media_type: String
-    let original_title: String?
+    let title: String?
     let release_date: String?
     let genre_ids: [Int]
     let vote_average: Double
+    let overview: String
 }
 
 
@@ -57,11 +58,6 @@ class MediaViewController: UIViewController {
         
     }
     
-        
-    
-    
-
-    
     func configureNavigationButton() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: nil)
@@ -82,7 +78,7 @@ class MediaViewController: UIViewController {
     
     
     func callRequest() {
-        let url = "https://api.themoviedb.org/3/trending/all/day?language=en-US&api_key=\(APIKey.movieKey)"
+        let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(APIKey.movieKey)"
         
         AF.request(url, method: .get)
             .responseDecodable(of: Content.self) { response in
@@ -118,7 +114,8 @@ extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
         cell.dateLabel.text = contents[indexPath.row].release_date
 
         cell.rateNumberLabel.text = "\(String(format: "%.1f", contents[indexPath.row].vote_average))"
-        cell.titleLabel.text = contents[indexPath.row].original_title
+        cell.titleLabel.text = contents[indexPath.row].title
+        cell.descriptionLabel.text = contents[indexPath.row].overview
         return cell
     }
     

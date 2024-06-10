@@ -28,16 +28,21 @@ class MediaTableViewCell: UITableViewCell {
     var posterView = {
         let view = UIImageView()
         view.layer.cornerRadius = 5
-        view.layer.borderWidth = 0.2
+        view.layer.borderWidth = 0.5
         view.addShadow(location: .top)
         view.addShadow(location: .bottom)
         view.addShadow(location: .right)
         view.addShadow(location: .left)
         view.layer.cornerRadius = 10
+        
         return view
     }()
     var posterImageView = {
         let poster = UIImageView()
+        poster.layer.masksToBounds = true
+        poster.layer.cornerRadius = 10
+        poster.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        poster.layer.borderWidth = 0.5
         return poster
     }()
     var rateLabel = {
@@ -59,6 +64,23 @@ class MediaTableViewCell: UITableViewCell {
         label.font = .boldSystemFont(ofSize: 18)
         return label
     }()
+    let descriptionLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .darkGray
+        return label
+    }()
+    let detailButton = {
+        var button = UIButton()
+        
+        button.setTitle("자세히 보기", for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.semanticContentAttribute = .forceRightToLeft
+        button.setTitleColor(.black, for: .normal)
+//        button.layer.borderWidth = 1
+//        button.layer.addBorder([.top], color: .black, width: 1)
+        return button
+    }()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -79,6 +101,8 @@ class MediaTableViewCell: UITableViewCell {
         contentView.addSubview(rateLabel)
         contentView.addSubview(rateNumberLabel)
         contentView.addSubview(titleLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(detailButton)
     }
     
     func configureLayout() {
@@ -98,8 +122,8 @@ class MediaTableViewCell: UITableViewCell {
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(20)
         }
         posterImageView.snp.makeConstraints { make in
-            make.top.equalTo(posterView.snp.top)
-            make.horizontalEdges.equalTo(posterView.snp.horizontalEdges)
+            make.top.equalTo(posterView.snp.top).inset(1)
+            make.horizontalEdges.equalTo(posterView.snp.horizontalEdges).inset(1)
             make.bottom.equalTo(posterView.snp.bottom).inset(120)
         }
         rateLabel.snp.makeConstraints { make in
@@ -116,9 +140,19 @@ class MediaTableViewCell: UITableViewCell {
         }
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(posterImageView.snp.bottom).offset(10)
-            make.leading.equalTo(posterView.snp.leading).inset(10)
-            make.width.equalTo(200)
-            make.height.equalTo(40)
+            make.horizontalEdges.equalTo(posterImageView.snp.horizontalEdges).inset(10)
+            make.height.equalTo(30)
+        }
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(0)
+            make.horizontalEdges.equalTo(posterImageView.snp.horizontalEdges).inset(10)
+            make.height.equalTo(20)
+        }
+        
+        detailButton.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(15)
+            make.horizontalEdges.equalTo(posterImageView.snp.horizontalEdges).inset(20)
+           
         }
     }
     
