@@ -44,10 +44,7 @@ class MediaViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.identifier)
-        
+        tableViewSet()
         configureNavigationButton()
         configureHeirarchy()
         configureLayout()
@@ -55,6 +52,20 @@ class MediaViewController: UIViewController {
       
         callRequest()
         
+        
+    }
+    
+    @objc func detailButtonTapped() {
+        //let nav = UINavigationController(rootViewController: MediaViewController())
+        let vc = DetailViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    func tableViewSet() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.identifier)
         
     }
     
@@ -85,7 +96,7 @@ class MediaViewController: UIViewController {
                        switch response.result {
                        case .success(let value):
                            self.contents = value.results
-                           print(self.contents)
+                    
                            self.tableView.reloadData()
                        case .failure(let error):
                            print(error)
@@ -111,11 +122,20 @@ extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
         cell.posterImageView.kf.setImage(with: url)
         cell.posterImageView.contentMode = .scaleToFill
         
-        cell.dateLabel.text = contents[indexPath.row].release_date
-
+       
+        if let release = contents[indexPath.row].release_date {
+            let date = DateFormatter.changeDate.date(from: release)
+            let dateString = DateFormatter.changeString.string(from: date!)
+            cell.dateLabel.text = dateString
+            
+        }
+        
+        
         cell.rateNumberLabel.text = "\(String(format: "%.1f", contents[indexPath.row].vote_average))"
         cell.titleLabel.text = contents[indexPath.row].title
         cell.descriptionLabel.text = contents[indexPath.row].overview
+        cell.detailButton.addTarget(self, action: #selector(detailButtonTapped), for: .touchUpInside)
+        
         return cell
     }
     

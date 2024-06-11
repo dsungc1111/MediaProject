@@ -74,11 +74,11 @@ class MediaTableViewCell: UITableViewCell {
         var button = UIButton()
         
         button.setTitle("자세히 보기", for: .normal)
-        button.contentHorizontalAlignment = .left
+        button.contentHorizontalAlignment = .right
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.tintColor = .black
         button.semanticContentAttribute = .forceRightToLeft
         button.setTitleColor(.black, for: .normal)
-//        button.layer.borderWidth = 1
-//        button.layer.addBorder([.top], color: .black, width: 1)
         return button
     }()
     
@@ -91,6 +91,12 @@ class MediaTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func detailButtonTapped() {
+        //let nav = UINavigationController(rootViewController: MediaViewController())
+        let vc = DetailViewController()
+        
     }
     
     func configureHierarchy() {

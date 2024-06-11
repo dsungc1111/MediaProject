@@ -20,6 +20,8 @@
 		8BD646B62C1715F2001819B5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BD646B52C1715F2001819B5 /* .gitignore */; };
 		8BD646B82C171C93001819B5 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646B72C171C93001819B5 /* APIKey.swift */; };
 		8BD646BB2C171E8C001819B5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646BA2C171E8C001819B5 /* Kingfisher */; };
+		8BD646C02C17C4D9001819B5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646BF2C17C4D9001819B5 /* DetailViewController.swift */; };
+		8BD646C22C17D6F7001819B5 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646C12C17D6F7001819B5 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		8BD646B12C16F816001819B5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		8BD646B52C1715F2001819B5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8BD646B72C171C93001819B5 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		8BD646BF2C17C4D9001819B5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8BD646C12C17D6F7001819B5 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,15 +75,15 @@
 		8BD646902C16E671001819B5 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				8BD646BE2C17C4B0001819B5 /* ViewController */,
 				8BD646B02C16F803001819B5 /* Extension */,
 				8BD646AD2C16EEC2001819B5 /* Protocol */,
 				8BD646912C16E671001819B5 /* AppDelegate.swift */,
+				8BD646AB2C16EB3C001819B5 /* MediaTableViewCell.swift */,
 				8BD646932C16E671001819B5 /* SceneDelegate.swift */,
-				8BD646952C16E671001819B5 /* MediaViewController.swift */,
 				8BD6469A2C16E672001819B5 /* Assets.xcassets */,
 				8BD6469C2C16E672001819B5 /* LaunchScreen.storyboard */,
 				8BD6469F2C16E672001819B5 /* Info.plist */,
-				8BD646AB2C16EB3C001819B5 /* MediaTableViewCell.swift */,
 				8BD646B72C171C93001819B5 /* APIKey.swift */,
 			);
 			path = MediaProject;
@@ -97,8 +101,18 @@
 			isa = PBXGroup;
 			children = (
 				8BD646B12C16F816001819B5 /* UIView+Extension.swift */,
+				8BD646C12C17D6F7001819B5 /* Date+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		8BD646BE2C17C4B0001819B5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8BD646952C16E671001819B5 /* MediaViewController.swift */,
+				8BD646BF2C17C4D9001819B5 /* DetailViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +203,8 @@
 				8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */,
 				8BD646AC2C16EB3C001819B5 /* MediaTableViewCell.swift in Sources */,
 				8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */,
+				8BD646C02C17C4D9001819B5 /* DetailViewController.swift in Sources */,
+				8BD646C22C17D6F7001819B5 /* Date+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
