@@ -16,12 +16,10 @@ class MediaTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .darkGray
          label.font = .systemFont(ofSize: 12)
-        label.text = "2012"
         return label
     }()
     var genreLabel = {
         let label = UILabel()
-        label.text = "미스테리"
         label.font = .boldSystemFont(ofSize: 14)
         return label
     }()
@@ -87,6 +85,7 @@ class MediaTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureHierarchy()
         configureLayout()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -164,7 +163,38 @@ class MediaTableViewCell: UITableViewCell {
     
     
     
-    
+    func configureCell(data: Results) {
+        let string = "https://image.tmdb.org/t/p/w500\(data.poster_path)"
+        let url = URL(string: string)
+        posterImageView.kf.setImage(with: url)
+        posterImageView.contentMode = .scaleToFill
+        
+       
+        if let release = data.release_date {
+            let date = DateFormatter.changeDate.date(from: release)
+            let dateString = DateFormatter.changeString.string(from: date!)
+            dateLabel.text = dateString
+        }
+        
+        
+        rateNumberLabel.text = "\(String(format: "%.1f", data.vote_average))"
+        titleLabel.text = data.title
+//        
+//        var joinNames = ""
+//        
+//        for i in 0..<people.count {
+//            if i == 0 {
+//                joinNames += people[i].name
+//            } else {
+//                joinNames += ", \(people[i].name)"
+//            }
+//        }
+
+        
+//        descriptionLabel.text = joinNames
+        detailButton.addTarget(self, action: #selector(detailButtonTapped), for: .touchUpInside)
+        
+    }
     
     
 }

@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        let vc = UINavigationController(rootViewController: MediaViewController())
+        let vc = UINavigationController(rootViewController: MovieViewController())
         
         
         vc.navigationBar.tintColor = .black

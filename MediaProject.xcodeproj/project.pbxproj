@@ -12,16 +12,19 @@
 		8BD646962C16E671001819B5 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646952C16E671001819B5 /* MediaViewController.swift */; };
 		8BD6469B2C16E672001819B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BD6469A2C16E672001819B5 /* Assets.xcassets */; };
 		8BD6469E2C16E672001819B5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8BD6469D2C16E672001819B5 /* Base */; };
-		8BD646A72C16EA36001819B5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646A62C16EA36001819B5 /* SnapKit */; };
-		8BD646AA2C16EA40001819B5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646A92C16EA40001819B5 /* Alamofire */; };
 		8BD646AC2C16EB3C001819B5 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646AB2C16EB3C001819B5 /* MediaTableViewCell.swift */; };
 		8BD646AF2C16EED2001819B5 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646AE2C16EED2001819B5 /* Protocol.swift */; };
 		8BD646B22C16F816001819B5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646B12C16F816001819B5 /* UIView+Extension.swift */; };
 		8BD646B62C1715F2001819B5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BD646B52C1715F2001819B5 /* .gitignore */; };
 		8BD646B82C171C93001819B5 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646B72C171C93001819B5 /* APIKey.swift */; };
-		8BD646BB2C171E8C001819B5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646BA2C171E8C001819B5 /* Kingfisher */; };
 		8BD646C02C17C4D9001819B5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646BF2C17C4D9001819B5 /* DetailViewController.swift */; };
 		8BD646C22C17D6F7001819B5 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646C12C17D6F7001819B5 /* Date+Extension.swift */; };
+		8BD646D52C183A82001819B5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646D42C183A82001819B5 /* Kingfisher */; };
+		8BD646D82C183A8B001819B5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646D72C183A8B001819B5 /* Alamofire */; };
+		8BD646DB2C183A98001819B5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646DA2C183A98001819B5 /* SnapKit */; };
+		8BD646DD2C183CB3001819B5 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646DC2C183CB3001819B5 /* Struct.swift */; };
+		8BD6473D2C190791001819B5 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6473C2C190791001819B5 /* MovieViewController.swift */; };
+		8BD647412C1907D1001819B5 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD647402C1907D1001819B5 /* MovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		8BD646B72C171C93001819B5 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		8BD646BF2C17C4D9001819B5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8BD646C12C17D6F7001819B5 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		8BD646DC2C183CB3001819B5 /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
+		8BD6473C2C190791001819B5 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		8BD647402C1907D1001819B5 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,9 +52,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BD646BB2C171E8C001819B5 /* Kingfisher in Frameworks */,
-				8BD646A72C16EA36001819B5 /* SnapKit in Frameworks */,
-				8BD646AA2C16EA40001819B5 /* Alamofire in Frameworks */,
+				8BD646DB2C183A98001819B5 /* SnapKit in Frameworks */,
+				8BD646D52C183A82001819B5 /* Kingfisher in Frameworks */,
+				8BD646D82C183A8B001819B5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +91,8 @@
 				8BD6469C2C16E672001819B5 /* LaunchScreen.storyboard */,
 				8BD6469F2C16E672001819B5 /* Info.plist */,
 				8BD646B72C171C93001819B5 /* APIKey.swift */,
+				8BD646DC2C183CB3001819B5 /* Struct.swift */,
+				8BD647402C1907D1001819B5 /* MovieCollectionViewCell.swift */,
 			);
 			path = MediaProject;
 			sourceTree = "<group>";
@@ -111,6 +119,7 @@
 			children = (
 				8BD646952C16E671001819B5 /* MediaViewController.swift */,
 				8BD646BF2C17C4D9001819B5 /* DetailViewController.swift */,
+				8BD6473C2C190791001819B5 /* MovieViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -132,9 +141,9 @@
 			);
 			name = MediaProject;
 			packageProductDependencies = (
-				8BD646A62C16EA36001819B5 /* SnapKit */,
-				8BD646A92C16EA40001819B5 /* Alamofire */,
-				8BD646BA2C171E8C001819B5 /* Kingfisher */,
+				8BD646D42C183A82001819B5 /* Kingfisher */,
+				8BD646D72C183A8B001819B5 /* Alamofire */,
+				8BD646DA2C183A98001819B5 /* SnapKit */,
 			);
 			productName = MediaProject;
 			productReference = 8BD6468E2C16E671001819B5 /* MediaProject.app */;
@@ -165,9 +174,9 @@
 			);
 			mainGroup = 8BD646852C16E671001819B5;
 			packageReferences = (
-				8BD646A52C16EA36001819B5 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				8BD646A82C16EA40001819B5 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				8BD646B92C171E8C001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				8BD646D32C183A82001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				8BD646D62C183A8B001819B5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				8BD646D92C183A98001819B5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 8BD6468F2C16E671001819B5 /* Products */;
 			projectDirPath = "";
@@ -198,12 +207,15 @@
 			files = (
 				8BD646B22C16F816001819B5 /* UIView+Extension.swift in Sources */,
 				8BD646B82C171C93001819B5 /* APIKey.swift in Sources */,
+				8BD6473D2C190791001819B5 /* MovieViewController.swift in Sources */,
+				8BD647412C1907D1001819B5 /* MovieCollectionViewCell.swift in Sources */,
 				8BD646AF2C16EED2001819B5 /* Protocol.swift in Sources */,
 				8BD646962C16E671001819B5 /* MediaViewController.swift in Sources */,
 				8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */,
 				8BD646AC2C16EB3C001819B5 /* MediaTableViewCell.swift in Sources */,
 				8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */,
 				8BD646C02C17C4D9001819B5 /* DetailViewController.swift in Sources */,
+				8BD646DD2C183CB3001819B5 /* Struct.swift in Sources */,
 				8BD646C22C17D6F7001819B5 /* Date+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,15 +437,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8BD646A52C16EA36001819B5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		8BD646D32C183A82001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
+				minimumVersion = 7.12.0;
 			};
 		};
-		8BD646A82C16EA40001819B5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		8BD646D62C183A8B001819B5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -441,31 +453,31 @@
 				minimumVersion = 5.9.1;
 			};
 		};
-		8BD646B92C171E8C001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		8BD646D92C183A98001819B5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.11.0;
+				minimumVersion = 5.7.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8BD646A62C16EA36001819B5 /* SnapKit */ = {
+		8BD646D42C183A82001819B5 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8BD646A52C16EA36001819B5 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
+			package = 8BD646D32C183A82001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
-		8BD646A92C16EA40001819B5 /* Alamofire */ = {
+		8BD646D72C183A8B001819B5 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8BD646A82C16EA40001819B5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 8BD646D62C183A8B001819B5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		8BD646BA2C171E8C001819B5 /* Kingfisher */ = {
+		8BD646DA2C183A98001819B5 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8BD646B92C171E8C001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
+			package = 8BD646D92C183A98001819B5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

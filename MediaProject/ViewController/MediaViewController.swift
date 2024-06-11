@@ -10,35 +10,27 @@ import SnapKit
 import Alamofire
 import Kingfisher
 
-// UserDefaults 관련 로직 객체
-// UserDefaultsManager
-// Data Transfer Object
-
-struct Content: Decodable {
-    let page: Int
-    let results: [Results]
-}
-
-
-struct Results: Decodable {
-    let poster_path: String
-    //let original_title: String
-    //let release_date: String
-//    let original_title: String
-//    let media_type: String
-    let title: String?
-    let release_date: String?
-    let genre_ids: [Int]
-    let vote_average: Double
-    let overview: String
-}
 
 
 class MediaViewController: UIViewController {
 
     var tableView = UITableView()
     
+//    var contents: [Results] = [] {
+//        didSet {
+//            for i in 0..<contents.count {
+//                callCreditRequest(id: contents[i].id)
+//            }
+//        }
+//    }
     var contents: [Results] = []
+    
+//    
+//    var people: [Int: [Info]] = [:]
+    
+    var list: [MovieInfo] = []
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +40,6 @@ class MediaViewController: UIViewController {
         configureNavigationButton()
         configureHeirarchy()
         configureLayout()
-        
-      
         callRequest()
         
         
@@ -88,22 +78,49 @@ class MediaViewController: UIViewController {
     }
     
     
+    
+    
+    
     func callRequest() {
         let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(APIKey.movieKey)"
         
         AF.request(url, method: .get)
             .responseDecodable(of: Content.self) { response in
-                       switch response.result {
-                       case .success(let value):
-                           self.contents = value.results
-                    
-                           self.tableView.reloadData()
-                       case .failure(let error):
-                           print(error)
-                    }
-                   }
+                switch response.result {
+                case .success(let value):
+                    self.contents = value.results
+                    //                           for i in 0..<value.results.count {
+                    //                               self.callCreditRequest(id: value.results[i].id)
+                    //                           }
+                    //                           self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            }
         
     }
+    
+    func callCreditRequest(id: Int) {
+        let url = "https://api.themoviedb.org/3/movie/\(id)/credits?language=en-US&api_key=\(APIKey.movieKey)"
+        AF.request(url, method: .get)
+            .responseDecodable(of: MovieInfo.self) { response in
+                switch response.result {
+                case .success(let value):
+                    for _ in 0..<value.cast.count {
+                        if id == value.id {
+                            self.list.append(value)
+                        }
+                    }
+                   self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        print(list)
+        
+    }
+    
+    
 
     
 }
@@ -116,26 +133,13 @@ extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MediaTableViewCell.identifier, for: indexPath) as! MediaTableViewCell
-       
-        let string = "https://image.tmdb.org/t/p/w500\(contents[indexPath.row].poster_path)"
-        let url = URL(string: string)
-        cell.posterImageView.kf.setImage(with: url)
-        cell.posterImageView.contentMode = .scaleToFill
         
-       
-        if let release = contents[indexPath.row].release_date {
-            let date = DateFormatter.changeDate.date(from: release)
-            let dateString = DateFormatter.changeString.string(from: date!)
-            cell.dateLabel.text = dateString
-            
-        }
+        let data = contents[indexPath.row]
+      
         
         
-        cell.rateNumberLabel.text = "\(String(format: "%.1f", contents[indexPath.row].vote_average))"
-        cell.titleLabel.text = contents[indexPath.row].title
-        cell.descriptionLabel.text = contents[indexPath.row].overview
-        cell.detailButton.addTarget(self, action: #selector(detailButtonTapped), for: .touchUpInside)
         
+        cell.configureCell(data: data)
         return cell
     }
     
