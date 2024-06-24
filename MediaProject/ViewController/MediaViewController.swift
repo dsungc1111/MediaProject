@@ -60,6 +60,7 @@ class MediaViewController: UIViewController {
                         self.callCreditRequest(id: value.results[i].id)
                     }
                 case .failure(let error):
+                    self.networkAlert()
                     print(error)
                 }
             }

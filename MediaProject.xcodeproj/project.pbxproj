@@ -16,6 +16,7 @@
 		8B29AE6A2C299A92006DB1FF /* NewworkRecommendMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE692C299A92006DB1FF /* NewworkRecommendMovie.swift */; };
 		8B29AE6C2C299B32006DB1FF /* RecommendedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE6B2C299B32006DB1FF /* RecommendedMovie.swift */; };
 		8B29AE6E2C29BB63006DB1FF /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE6D2C29BB63006DB1FF /* RecommendTableViewCell.swift */; };
+		8B29AE702C2A3B95006DB1FF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE6F2C2A3B95006DB1FF /* UIViewController+Extension.swift */; };
 		8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646912C16E671001819B5 /* AppDelegate.swift */; };
 		8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646932C16E671001819B5 /* SceneDelegate.swift */; };
 		8BD646962C16E671001819B5 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646952C16E671001819B5 /* MediaViewController.swift */; };
@@ -46,6 +47,7 @@
 		8B29AE692C299A92006DB1FF /* NewworkRecommendMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewworkRecommendMovie.swift; sourceTree = "<group>"; };
 		8B29AE6B2C299B32006DB1FF /* RecommendedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedMovie.swift; sourceTree = "<group>"; };
 		8B29AE6D2C29BB63006DB1FF /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
+		8B29AE6F2C2A3B95006DB1FF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		8BD6468E2C16E671001819B5 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD646912C16E671001819B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD646932C16E671001819B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				8BD646B12C16F816001819B5 /* UIView+Extension.swift */,
 				8BD646C12C17D6F7001819B5 /* Date+Extension.swift */,
+				8B29AE6F2C2A3B95006DB1FF /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				8B29AE682C297FD5006DB1FF /* Data.swift in Sources */,
 				8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */,
 				8BD646AC2C16EB3C001819B5 /* MediaTableViewCell.swift in Sources */,
+				8B29AE702C2A3B95006DB1FF /* UIViewController+Extension.swift in Sources */,
 				8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */,
 				8B29AE6C2C299B32006DB1FF /* RecommendedMovie.swift in Sources */,
 				8BD646C02C17C4D9001819B5 /* SimilarViewController.swift in Sources */,
