@@ -15,7 +15,7 @@ class MediaTableViewCell: UITableViewCell {
      var dateLabel = {
         let label = UILabel()
         label.textColor = .darkGray
-         label.font = .systemFont(ofSize: 12)
+        label.font = .systemFont(ofSize: 12)
         return label
     }()
     var genreLabel = {
@@ -45,7 +45,7 @@ class MediaTableViewCell: UITableViewCell {
     }()
     var rateLabel = {
         let label = UILabel()
-        label.backgroundColor = .systemBlue
+        
         label.textColor = .white
         label.textAlignment = .center
         label.text = "평점"
@@ -70,7 +70,6 @@ class MediaTableViewCell: UITableViewCell {
     }()
     let detailButton = {
         var button = UIButton()
-        
         button.setTitle("자세히 보기", for: .normal)
         button.contentHorizontalAlignment = .right
         button.setImage(UIImage(systemName: "plus"), for: .normal)
@@ -91,13 +90,6 @@ class MediaTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @objc func detailButtonTapped() {
-        //let nav = UINavigationController(rootViewController: MediaViewController())
-        let vc = DetailViewController()
-        
-    }
-    
     func configureHierarchy() {
         contentView.addSubview(dateLabel)
         contentView.addSubview(genreLabel)
@@ -160,40 +152,21 @@ class MediaTableViewCell: UITableViewCell {
            
         }
     }
-    
-    
-    
     func configureCell(data: Results) {
         let string = "https://image.tmdb.org/t/p/w500\(data.poster_path)"
         let url = URL(string: string)
         posterImageView.kf.setImage(with: url)
-        posterImageView.contentMode = .scaleToFill
+        posterImageView.clipsToBounds = true
+        posterImageView.contentMode = .scaleAspectFill
         
-       
         if let release = data.release_date {
             let date = DateFormatter.changeDate.date(from: release)
             let dateString = DateFormatter.changeString.string(from: date!)
             dateLabel.text = dateString
         }
-        
-        
         rateNumberLabel.text = "\(String(format: "%.1f", data.vote_average))"
         titleLabel.text = data.title
-//        
-//        var joinNames = ""
-//        
-//        for i in 0..<people.count {
-//            if i == 0 {
-//                joinNames += people[i].name
-//            } else {
-//                joinNames += ", \(people[i].name)"
-//            }
-//        }
 
-        
-//        descriptionLabel.text = joinNames
-        detailButton.addTarget(self, action: #selector(detailButtonTapped), for: .touchUpInside)
-        
     }
     
     

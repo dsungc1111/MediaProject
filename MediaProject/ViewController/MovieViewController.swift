@@ -25,9 +25,6 @@ struct MoviewDetail: Decodable {
 }
 
 class MovieViewController: UIViewController {
-  
-   
-    
     
     var list: [MoviewDetail] = []
     var page = 1
@@ -54,7 +51,6 @@ class MovieViewController: UIViewController {
         collectionViewSet()
         configureHierarchy()
         configureLayout()
-        
         callRequest()
         
     }
@@ -63,7 +59,7 @@ class MovieViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
-       
+        
         view.backgroundColor = .white
     }
     
@@ -75,10 +71,6 @@ class MovieViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    
-    
-    
-    
     func callRequest() {
         let url =
         "https://api.themoviedb.org/3/search/movie?api_key=\(APIKey.myKey)&query=String&include_adult=false&language=en-US&page=\(page)"
@@ -86,8 +78,6 @@ class MovieViewController: UIViewController {
         AF.request(url).responseDecodable(of: Movie.self) { response in
             switch response.result {
             case .success(let value):
-                
-                
                 if self.page == 1{
                     self.list = value.results
                 } else {
@@ -112,7 +102,7 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as! MovieCollectionViewCell
         
         
-        let string = "https://image.tmdb.org/t/p/w500\(  list[indexPath.row].poster_path ?? "/xaTVWUrPbGM4SgrLOaaWLeUEafI.jpg")"
+        let string = "https://image.tmdb.org/t/p/w500\(list[indexPath.row].poster_path ?? "/xaTVWUrPbGM4SgrLOaaWLeUEafI.jpg")"
         
         
         let url = URL(string: string)
@@ -140,7 +130,7 @@ extension MovieViewController: UICollectionViewDataSourcePrefetching {
     }
     
     
-   
+    
     
     
 }

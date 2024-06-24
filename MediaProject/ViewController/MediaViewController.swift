@@ -15,21 +15,7 @@ import Kingfisher
 class MediaViewController: UIViewController {
 
     var tableView = UITableView()
-    
-//    var contents: [Results] = [] {
-//        didSet {
-//            for i in 0..<contents.count {
-//                callCreditRequest(id: contents[i].id)
-//            }
-//        }
-//    }
     var contents: [Results] = []
-    
-//    
-//    var people: [Int: [Info]] = [:]
-    
-    var list: [MovieInfo] = []
-    
     
     
     override func viewDidLoad() {
@@ -41,31 +27,23 @@ class MediaViewController: UIViewController {
         configureHeirarchy()
         configureLayout()
         callRequest()
-        
-        
     }
     
     @objc func detailButtonTapped() {
-        //let nav = UINavigationController(rootViewController: MediaViewController())
-        let vc = DetailViewController()
+        let vc = SimilarViewController()
         navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     func tableViewSet() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.identifier)
-        
     }
     
     func configureNavigationButton() {
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: nil)
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
     }
-    
     func configureHeirarchy() {
         view.addSubview(tableView)
     }
@@ -76,11 +54,6 @@ class MediaViewController: UIViewController {
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    
-    
-    
-    
-    
     func callRequest() {
         let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(APIKey.movieKey)"
         
@@ -89,10 +62,10 @@ class MediaViewController: UIViewController {
                 switch response.result {
                 case .success(let value):
                     self.contents = value.results
-                    //                           for i in 0..<value.results.count {
-                    //                               self.callCreditRequest(id: value.results[i].id)
-                    //                           }
-                    //                           self.tableView.reloadData()
+                    for i in 0..<value.results.count {
+                        self.callCreditRequest(id: value.results[i].id)
+                    }
+                    self.tableView.reloadData()
                 case .failure(let error):
                     print(error)
                 }
@@ -106,9 +79,9 @@ class MediaViewController: UIViewController {
             .responseDecodable(of: MovieInfo.self) { response in
                 switch response.result {
                 case .success(let value):
-                    for _ in 0..<value.cast.count {
-                        if id == value.id {
-                            self.list.append(value)
+                    for i in 0...value.id {
+                        if id == i {
+                            Data.list.append(value)
                         }
                     }
                    self.tableView.reloadData()
@@ -116,13 +89,8 @@ class MediaViewController: UIViewController {
                     print(error)
                 }
             }
-        print(list)
         
     }
-    
-    
-
-    
 }
 
 
@@ -133,12 +101,15 @@ extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MediaTableViewCell.identifier, for: indexPath) as! MediaTableViewCell
-        
+       
         let data = contents[indexPath.row]
-      
-        
-        
-        
+        cell.descriptionLabel.text = ""
+        for _ in 0...indexPath.row {
+            for i in 0..<Data.list.count {
+                cell.descriptionLabel.text! +=  "\(Data.list[indexPath.row].cast[i].name), "
+            }
+        }
+        cell.detailButton.addTarget(self, action: #selector(detailButtonTapped), for: .touchUpInside)
         cell.configureCell(data: data)
         return cell
     }
@@ -146,5 +117,10 @@ extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 450
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
 }
 

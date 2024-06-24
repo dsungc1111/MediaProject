@@ -18,15 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        let vc = UINavigationController(rootViewController: MovieViewController())
-        
+        let vc = UINavigationController(rootViewController: MediaViewController())
         
         vc.navigationBar.tintColor = .black
         
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
-//        
-//        guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
