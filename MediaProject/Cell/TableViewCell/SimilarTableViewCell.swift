@@ -70,31 +70,10 @@ class SimilarTableViewCell: UITableViewCell {
             }
         }
     }
-    
-//    func callRequestRecMovie() {
-//        for i in 0..<Data.list.count {
-//            NetworkSimilarMovie.shared.callSimilarMovie(id: 940721, page: page) {result in
-//                switch result {
-//                case .success(let posters):
-//                    let string = "https://image.tmdb.org/t/p/w500\(posters[i].posterPath ?? "")"
-//                    self.recPosterLink.append(string)
-//                    self.collectionView.reloadData()
-//                case .failure(_):
-//                    print("error")
-//                }
-//            }
-//        }
-//    }
-    
-    
-    
 }
-
-
 extension SimilarTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return similarPosterLink.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

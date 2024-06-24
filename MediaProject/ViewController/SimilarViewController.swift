@@ -77,7 +77,6 @@ extension SimilarViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return view
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SimilarTableViewCell.identifier, for: indexPath) as? SimilarTableViewCell else { return SimilarTableViewCell() }

@@ -21,25 +21,21 @@ class MediaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
         tableViewSet()
         configureNavigationButton()
         configureHeirarchy()
         configureLayout()
         callRequest()
     }
-    
     @objc func detailButtonTapped() {
         let vc = SimilarViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
-    
     func tableViewSet() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.identifier)
     }
-    
     func configureNavigationButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
@@ -47,7 +43,6 @@ class MediaViewController: UIViewController {
     func configureHeirarchy() {
         view.addSubview(tableView)
     }
-    
     func configureLayout() {
         tableView.snp.makeConstraints { make in
             make.verticalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -56,7 +51,6 @@ class MediaViewController: UIViewController {
     }
     func callRequest() {
         let url = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(APIKey.movieKey)"
-        
         AF.request(url, method: .get)
             .responseDecodable(of: Content.self) { response in
                 switch response.result {
@@ -65,14 +59,11 @@ class MediaViewController: UIViewController {
                     for i in 0..<value.results.count {
                         self.callCreditRequest(id: value.results[i].id)
                     }
-                    self.tableView.reloadData()
                 case .failure(let error):
                     print(error)
                 }
             }
-        
     }
-    
     func callCreditRequest(id: Int) {
         let url = "https://api.themoviedb.org/3/movie/\(id)/credits?language=en-US&api_key=\(APIKey.movieKey)"
         AF.request(url, method: .get)
@@ -84,41 +75,34 @@ class MediaViewController: UIViewController {
                             Data.list.append(value)
                         }
                     }
-                   self.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 case .failure(let error):
                     print(error)
                 }
             }
-        
     }
 }
-
-
 extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contents.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MediaTableViewCell.identifier, for: indexPath) as! MediaTableViewCell
-       
         let data = contents[indexPath.row]
         cell.descriptionLabel.text = ""
-        for _ in 0...indexPath.row {
-            for i in 0..<Data.list.count {
+        for i in 0..<Data.list[indexPath.row].cast.count {
                 cell.descriptionLabel.text! +=  "\(Data.list[indexPath.row].cast[i].name), "
             }
-        }
         cell.detailButton.addTarget(self, action: #selector(detailButtonTapped), for: .touchUpInside)
         cell.configureCell(data: data)
         return cell
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 450
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     

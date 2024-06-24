@@ -32,7 +32,6 @@ class MediaTableViewCell: UITableViewCell {
         view.addShadow(location: .right)
         view.addShadow(location: .left)
         view.layer.cornerRadius = 10
-        
         return view
     }()
     var posterImageView = {
@@ -45,7 +44,7 @@ class MediaTableViewCell: UITableViewCell {
     }()
     var rateLabel = {
         let label = UILabel()
-        
+        label.backgroundColor = .black
         label.textColor = .white
         label.textAlignment = .center
         label.text = "평점"
@@ -78,15 +77,11 @@ class MediaTableViewCell: UITableViewCell {
         button.setTitleColor(.black, for: .normal)
         return button
     }()
-    
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureHierarchy()
         configureLayout()
-        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -101,7 +96,6 @@ class MediaTableViewCell: UITableViewCell {
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(detailButton)
     }
-    
     func configureLayout() {
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
