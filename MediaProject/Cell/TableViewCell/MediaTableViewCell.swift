@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+
 
 class MediaTableViewCell: UITableViewCell {
 
@@ -20,14 +22,21 @@ class MediaTableViewCell: UITableViewCell {
         label.font = .boldSystemFont(ofSize: 14)
         return label
     }()
-    var posterView = {
+    var shadowView = {
         let view = UIView()
-        view.layer.borderWidth = 0.5
+        view.backgroundColor = .white
+        view.layer.masksToBounds = false
         view.addShadow(location: .top)
         view.addShadow(location: .bottom)
         view.addShadow(location: .right)
         view.addShadow(location: .left)
+        return view
+    }()
+    var posterView = {
+        let view = UIView()
         view.layer.cornerRadius = 10
+        view.backgroundColor = .white
+        view.layer.masksToBounds = true
         return view
     }()
     var posterImageView = {
@@ -84,6 +93,7 @@ class MediaTableViewCell: UITableViewCell {
     func configureHierarchy() {
         contentView.addSubview(dateLabel)
         contentView.addSubview(genreLabel)
+        contentView.addSubview(shadowView)
         contentView.addSubview(posterView)
         contentView.addSubview(posterImageView)
         contentView.addSubview(rateLabel)
@@ -93,9 +103,10 @@ class MediaTableViewCell: UITableViewCell {
         contentView.addSubview(detailButton)
     }
     func configureLayout() {
+       
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
-            make.leading.equalTo(contentView.snp.leading).inset(20)
+            make.leading.equalTo(contentView.snp.leading).inset(30)
             make.width.equalTo(100)
         }
         genreLabel.snp.makeConstraints { make in
@@ -103,13 +114,19 @@ class MediaTableViewCell: UITableViewCell {
             make.leading.equalTo(contentView.snp.leading).inset(20)
             make.width.equalTo(100)
         }
+        shadowView.snp.makeConstraints { make in
+            make.top.equalTo(genreLabel.snp.bottom).offset(14)
+            make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(25)
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(22)
+        }
         posterView.snp.makeConstraints { make in
             make.top.equalTo(genreLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(20)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(20)
         }
         posterImageView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(posterView.safeAreaLayoutGuide)
+            make.top.equalTo(posterView.snp.top)
+            make.horizontalEdges.equalTo(posterView.snp.horizontalEdges)
             make.bottom.equalTo(posterView.snp.bottom).inset(120)
         }
         rateLabel.snp.makeConstraints { make in
