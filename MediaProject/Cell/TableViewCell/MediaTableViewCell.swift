@@ -145,13 +145,15 @@ class MediaTableViewCell: UITableViewCell {
         let url = URL(string: string)
         posterImageView.kf.setImage(with: url)
         
-        if let release = data.release_date {
-            let date = DateFormatter.changeDate.date(from: release)
-            let dateString = DateFormatter.changeString.string(from: date!)
-            dateLabel.text = dateString
+        if let releaseDate = data.release_date {
+            guard let convertDate = DateChange.shared.stringToDate(string: releaseDate) else { return  }
+            let convertString = DateChange.shared.dateToString(date: convertDate)
+            dateLabel.text = convertString
         }
         rateNumberLabel.text = "\(String(format: "%.1f", data.vote_average))"
         titleLabel.text = data.title
     }
+    
+
 }
 
