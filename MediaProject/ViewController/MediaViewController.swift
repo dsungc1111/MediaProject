@@ -98,7 +98,7 @@ extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
         return 450
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let vc = SimilarViewController()
+            let vc = ContentViewController()
             navigationController?.pushViewController(vc, animated: true)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }

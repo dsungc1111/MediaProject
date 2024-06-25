@@ -8,24 +8,24 @@
 import Foundation
 import Alamofire
 
-class NewworkRecommendMovie {
+class NetworkRecommendMovie {
     
-    static var shared = NewworkRecommendMovie()
+    static var shared = NetworkRecommendMovie()
     
     private init() {}
     
-    func callrecommendedMovie(id: Int, page: Int, completionHandler: @escaping (Result<[RecMovie], Error>) -> Void) {
-        let url = "https://api.themoviedb.org/3/movie/\(id)/recommendations?language=ko-Kr&page%20=\(page)"
+    func callrecommendedMovie(id: Int, completionHandler: @escaping ([MovieResults]) -> Void) {
+        let url = "https://api.themoviedb.org/3/movie/\(id)/recommendations?language=ko-Kr&page=1"
 
         let header: HTTPHeaders = ["Authorization" : APIKey.similar, "accept" : "application/json" ]
 
         AF.request(url, method: .get, headers: header)
-            .responseDecodable(of: RecommendedMovie.self) { response in
+            .responseDecodable(of: Similar.self) { response in
                 switch response.result {
                 case .success(let value):
-                    completionHandler(.success(value.results))
+                    completionHandler(value.results)
                 case .failure(let error):
-                    completionHandler(.failure(error))
+                    print(error)
                 }
             }
     }

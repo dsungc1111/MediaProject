@@ -14,8 +14,8 @@ class NetworkSimilarMovie {
     
     private init() {}
     
-    func callSimilarMovie(id: Int, page: Int, completionHandler: @escaping (Result<[ResultsMovie], Error>) -> Void) {
-        let url = "https://api.themoviedb.org/3/movie/\(id)/similar?language=ko-Kr&page=\(page)"
+    func callSimilarMovie(id: Int, completionHandler: @escaping ([MovieResults]) -> Void) {
+        let url = "https://api.themoviedb.org/3/movie/\(id)/similar?language=ko-Kr&page=1"
         
         let header: HTTPHeaders = ["Authorization" : APIKey.similar, "accept" : "application/json" ]
 
@@ -23,9 +23,9 @@ class NetworkSimilarMovie {
             .responseDecodable(of: Similar.self) { response in
                 switch response.result {
                 case .success(let value):
-                    completionHandler(.success(value.results))
+                    completionHandler(value.results)
                 case .failure(let error):
-                    completionHandler(.failure(error))
+                    print(error)
                 }
             }
     }

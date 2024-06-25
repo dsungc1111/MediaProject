@@ -10,5 +10,5 @@ import Foundation
 
 struct Data {
     static var list: [MovieInfo] = []
-    static var similarMovies: [ResultsMovie]?
+    static var similarMovies: [MovieResults]?
 }

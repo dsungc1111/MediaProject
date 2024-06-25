@@ -1,0 +1,138 @@
+//
+//  DetailViewController.swift
+//  MediaProject
+//
+//  Created by 최대성 on 6/11/24.
+//
+
+import UIKit
+import SnapKit
+
+class ContentViewController: UIViewController {
+    var page = 1
+    let themeLabel = {
+        let label = UILabel()
+        label.text = "극한직업"
+        label.font = .boldSystemFont(ofSize: 30)
+        return label
+    }()
+    var posterLink: [[MovieResults]] = [
+        [MovieResults(posterPath: "")],
+        [MovieResults(posterPath: "")]
+    ]
+    let tableView = UITableView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        configureTableView()
+        configureHierarchy()
+        configureLayout()
+        
+        let group = DispatchGroup()
+        
+        group.enter()
+        DispatchQueue.global().async {
+            NetworkSimilarMovie.shared.callSimilarMovie(id: 940721) { result in
+                self.posterLink[0] = result
+                group.leave()
+            }
+        }
+        group.enter()
+        DispatchQueue.global().async {
+            NetworkRecommendMovie.shared.callrecommendedMovie(id: 940721) { result in
+                self.posterLink[1] = result
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+    }
+    func configureHierarchy() {
+        view.addSubview(themeLabel)
+        view.addSubview(tableView)
+    }
+    func configureLayout() {
+        themeLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(themeLabel.snp.bottom).offset(20)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ContentTableViewCell.self, forCellReuseIdentifier: ContentTableViewCell.identifier)
+        tableView.separatorStyle = .none
+    }
+    override func viewDidLayoutSubviews() {
+        navigationController?.navigationBar.layer.addBorder([.bottom], color: .systemGray4, width: 1)
+    }
+    
+}
+extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posterLink.count
+    }
+//    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 2
+//    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let view = UIView()
+//        let label = UILabel()
+//        view.backgroundColor = .white
+//        label.text = section == 0 ? "비슷한 영화" : "추천 영화"
+//        label.font = UIFont.boldSystemFont(ofSize: 20)
+//        view.addSubview(label)
+//        label.snp.makeConstraints { make in
+//            make.centerY.equalToSuperview()
+//            make.horizontalEdges.equalToSuperview().inset(20)
+//        }
+//        return view
+//    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContentTableViewCell.identifier, for: indexPath) as? ContentTableViewCell else { return ContentTableViewCell() }
+        cell.collectionView.tag = indexPath.row
+        cell.collectionView.delegate = self
+        cell.collectionView.dataSource = self
+        cell.collectionView.register(SimilarCollectionViewCell.self, forCellWithReuseIdentifier: SimilarCollectionViewCell.identifier)
+        cell.collectionView.reloadData()
+        return cell
+        
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let totalWidth = tableView.bounds.width
+        let width = totalWidth / 3 - 20
+        return width * 1.5
+    }
+}
+
+extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView.tag == 0 {
+            return posterLink[0].count
+        } else {
+            return posterLink[1].count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimilarCollectionViewCell.identifier, for: indexPath) as? SimilarCollectionViewCell else { return SimilarCollectionViewCell() }
+        let data = posterLink[collectionView.tag][indexPath.row]
+        
+        let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.posterPath ?? "")")
+        cell.imageView.kf.setImage(with: url)
+        
+       
+        return cell
+    }
+    
+    
+}
