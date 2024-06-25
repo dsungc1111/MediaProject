@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class ContentViewController: UIViewController {
-    var page = 1
     let themeLabel = {
         let label = UILabel()
         label.text = "극한직업"

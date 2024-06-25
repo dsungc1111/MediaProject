@@ -17,6 +17,7 @@
 		8B29AE702C2A3B95006DB1FF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE6F2C2A3B95006DB1FF /* UIViewController+Extension.swift */; };
 		8B456EC12C2AB9BB003CFBD1 /* PosterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EC02C2AB9BB003CFBD1 /* PosterImage.swift */; };
 		8B456EC32C2AFAFF003CFBD1 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EC22C2AFAFF003CFBD1 /* DateFormatter.swift */; };
+		8B456EC52C2B8544003CFBD1 /* DetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EC42C2B8544003CFBD1 /* DetailInfoViewController.swift */; };
 		8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646912C16E671001819B5 /* AppDelegate.swift */; };
 		8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646932C16E671001819B5 /* SceneDelegate.swift */; };
 		8BD646962C16E671001819B5 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646952C16E671001819B5 /* MediaViewController.swift */; };
@@ -47,6 +48,7 @@
 		8B29AE6F2C2A3B95006DB1FF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		8B456EC02C2AB9BB003CFBD1 /* PosterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImage.swift; sourceTree = "<group>"; };
 		8B456EC22C2AFAFF003CFBD1 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		8B456EC42C2B8544003CFBD1 /* DetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewController.swift; sourceTree = "<group>"; };
 		8BD6468E2C16E671001819B5 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD646912C16E671001819B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD646932C16E671001819B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				8BD646952C16E671001819B5 /* MediaViewController.swift */,
 				8BD646BF2C17C4D9001819B5 /* ContentViewController.swift */,
 				8BD6473C2C190791001819B5 /* MovieViewController.swift */,
+				8B456EC42C2B8544003CFBD1 /* DetailInfoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				8BD646B22C16F816001819B5 /* UIView+Extension.swift in Sources */,
 				8B456EC32C2AFAFF003CFBD1 /* DateFormatter.swift in Sources */,
 				8BD646B82C171C93001819B5 /* APIKey.swift in Sources */,
+				8B456EC52C2B8544003CFBD1 /* DetailInfoViewController.swift in Sources */,
 				8BD6473D2C190791001819B5 /* MovieViewController.swift in Sources */,
 				8BD647412C1907D1001819B5 /* Main.swift in Sources */,
 				8BD646AF2C16EED2001819B5 /* Protocol.swift in Sources */,
