@@ -18,9 +18,9 @@ class ContentViewController: UIViewController {
     }()
     var posterLink: [[MovieResults]] = [
         [MovieResults(posterPath: "")],
-        [MovieResults(posterPath: "")],
         [MovieResults(posterPath: "")]
     ]
+    var posterLink2: [PosterPath] = [PosterPath(filePath: "")]
     let tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +47,18 @@ class ContentViewController: UIViewController {
                 group.leave()
             }
         }
-        
-        
-        
+        group.enter()
+        DispatchQueue.global().async {
+            NetworkPosterImage.shared.callPosterImages() {
+                result in
+                self.posterLink2 = result
+                group.leave()
+            }
+        }
         group.notify(queue: .main) {
             self.tableView.reloadData()
         }
+        
     }
     
     func configureHierarchy() {
@@ -83,15 +89,16 @@ class ContentViewController: UIViewController {
 }
 extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posterLink.count
+        return posterLink.count + 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContentTableViewCell.identifier, for: indexPath) as? ContentTableViewCell else { return ContentTableViewCell() }
         if indexPath.row == 0 {
             cell.themeLabel.text = "비슷한 영화"
-        } else {
+        } else if indexPath.row == 1 {
             cell.themeLabel.text = "추천 영화"
+        } else {
+            cell.themeLabel.text = "포스터"
         }
         cell.collectionView.tag = indexPath.row
         cell.collectionView.delegate = self
@@ -99,30 +106,36 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.register(SimilarCollectionViewCell.self, forCellWithReuseIdentifier: SimilarCollectionViewCell.identifier)
         cell.collectionView.reloadData()
         return cell
-        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
-    
 }
 
 extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 0 {
             return posterLink[0].count
-        } else {
+        } else if collectionView.tag == 1 {
             return posterLink[1].count
+        } else {
+            return posterLink2.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimilarCollectionViewCell.identifier, for: indexPath) as? SimilarCollectionViewCell else { return SimilarCollectionViewCell() }
-        let data = posterLink[collectionView.tag][indexPath.row]
         
-        let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.posterPath ?? "")")
-        cell.imageView.kf.setImage(with: url)
-        
+        if collectionView.tag < 2 {
+            let data = posterLink[collectionView.tag][indexPath.row]
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.posterPath ?? "")")
+            cell.imageView.kf.setImage(with: url)
+        }
+        if collectionView.tag == 2 {
+            let data = posterLink2[indexPath.row]
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.filePath)")
+            cell.imageView.kf.setImage(with: url)
+        }
         
         return cell
     }
