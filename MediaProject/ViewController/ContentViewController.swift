@@ -18,6 +18,7 @@ class ContentViewController: UIViewController {
     }()
     var posterLink: [[MovieResults]] = [
         [MovieResults(posterPath: "")],
+        [MovieResults(posterPath: "")],
         [MovieResults(posterPath: "")]
     ]
     let tableView = UITableView()
@@ -27,7 +28,9 @@ class ContentViewController: UIViewController {
         configureTableView()
         configureHierarchy()
         configureLayout()
-        
+        getMovies()
+    }
+    func getMovies() {
         let group = DispatchGroup()
         
         group.enter()
@@ -45,10 +48,13 @@ class ContentViewController: UIViewController {
             }
         }
         
+        
+        
         group.notify(queue: .main) {
             self.tableView.reloadData()
         }
     }
+    
     func configureHierarchy() {
         view.addSubview(themeLabel)
         view.addSubview(tableView)
@@ -79,26 +85,14 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posterLink.count
     }
-//    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 2
-//    }
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = UIView()
-//        let label = UILabel()
-//        view.backgroundColor = .white
-//        label.text = section == 0 ? "비슷한 영화" : "추천 영화"
-//        label.font = UIFont.boldSystemFont(ofSize: 20)
-//        view.addSubview(label)
-//        label.snp.makeConstraints { make in
-//            make.centerY.equalToSuperview()
-//            make.horizontalEdges.equalToSuperview().inset(20)
-//        }
-//        return view
-//    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContentTableViewCell.identifier, for: indexPath) as? ContentTableViewCell else { return ContentTableViewCell() }
+        if indexPath.row == 0 {
+            cell.themeLabel.text = "비슷한 영화"
+        } else {
+            cell.themeLabel.text = "추천 영화"
+        }
         cell.collectionView.tag = indexPath.row
         cell.collectionView.delegate = self
         cell.collectionView.dataSource = self
@@ -108,10 +102,9 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let totalWidth = tableView.bounds.width
-        let width = totalWidth / 3 - 20
-        return width * 1.5
+        return 200
     }
+    
 }
 
 extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -130,7 +123,7 @@ extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataS
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.posterPath ?? "")")
         cell.imageView.kf.setImage(with: url)
         
-       
+        
         return cell
     }
     

@@ -10,6 +10,13 @@ import SnapKit
 
 class ContentTableViewCell: UITableViewCell {
 
+    let themeLabel = {
+        let label = UILabel()
+        label.text = "dfds"
+        label.font = .boldSystemFont(ofSize: 20)
+        return label
+    }()
+    
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
     static func layout() -> UICollectionViewLayout {
@@ -33,15 +40,20 @@ class ContentTableViewCell: UITableViewCell {
     }
     
     func configureHeirarchy() {
+        contentView.addSubview(themeLabel)
         contentView.addSubview(collectionView)
     }
     func configureLayout() {
+        themeLabel.snp.makeConstraints { make in
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(5)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(20)
+        }
         collectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(themeLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide)
-            
         }
+       
     }
     
 
