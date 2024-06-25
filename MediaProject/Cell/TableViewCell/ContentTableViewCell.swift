@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SimilarTableViewCell: UITableViewCell {
+class ContentTableViewCell: UITableViewCell {
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     static func collectionViewLayout() -> UICollectionViewLayout {
@@ -71,7 +71,7 @@ class SimilarTableViewCell: UITableViewCell {
         }
     }
 }
-extension SimilarTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return similarPosterLink.count
     }

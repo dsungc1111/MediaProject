@@ -17,7 +17,6 @@ class MediaViewController: UIViewController {
     var tableView = UITableView()
     var contents: [Results] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -26,10 +25,6 @@ class MediaViewController: UIViewController {
         configureHeirarchy()
         configureLayout()
         callRequest()
-    }
-    @objc func detailButtonTapped() {
-        let vc = SimilarViewController()
-        navigationController?.pushViewController(vc, animated: true)
     }
     func tableViewSet() {
         tableView.delegate = self
@@ -96,7 +91,6 @@ extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
         for i in 0..<Data.list[indexPath.row].cast.count {
                 cell.descriptionLabel.text! +=  "\(Data.list[indexPath.row].cast[i].name), "
             }
-        cell.detailButton.addTarget(self, action: #selector(detailButtonTapped), for: .touchUpInside)
         cell.configureCell(data: data)
         return cell
     }
@@ -104,6 +98,8 @@ extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
         return 450
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let vc = SimilarViewController()
+            navigationController?.pushViewController(vc, animated: true)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
