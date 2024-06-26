@@ -12,7 +12,6 @@ class DetailInfoViewController: BaseViewController {
     
     static var getContents = Results(posterPath: "", title: "", releaseDate: "", backdropPath: "", voteAverage: 0.0, id: 0)
     
-    
     let imageView = {
         let image = UIImageView()
         image.clipsToBounds = true
@@ -27,9 +26,7 @@ class DetailInfoViewController: BaseViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "출연/제작"
-        
     }
     
     override func configureHierarchy() {

@@ -11,7 +11,7 @@ import Foundation
 
 class DateChange {
     
-    static var shared = DateChange()
+    static let shared = DateChange()
     
     private init() {}
     

@@ -73,7 +73,7 @@ class MovieViewController: UIViewController {
     }
     func callRequest() {
         let url =
-        "https://api.themoviedb.org/3/search/movie?api_key=\(APIKey.myKey)&query=String&include_adult=false&language=en-US&page=\(page)"
+        "https://api.themoviedb.org/3/search/movie?api_key=\(APIKey.movieKey)&query=String&include_adult=false&language=en-US&page=\(page)"
         
         AF.request(url).responseDecodable(of: Movie.self) { response in
             switch response.result {

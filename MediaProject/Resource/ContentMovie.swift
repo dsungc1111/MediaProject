@@ -20,8 +20,6 @@ import Foundation
 //struct Trending: Decodable {
 //    let results: [Results]
 //}
-
-
 struct MovieResults: Decodable {
     let posterPath: String?
     
@@ -34,3 +32,15 @@ struct Similar: Decodable {
     let results: [MovieResults]
 }
 
+
+struct FilePath: Decodable {
+    let filePath: String
+    
+    enum CodingKeys: String, CodingKey {
+        case filePath = "file_path"
+    }
+}
+
+struct Poster: Decodable {
+    let posters: [FilePath]
+}

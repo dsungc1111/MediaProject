@@ -19,11 +19,12 @@ class ContentViewController: UIViewController {
         [MovieResults(posterPath: "")],
         [MovieResults(posterPath: "")]
     ]
-    var posterLink2: [PosterPath] = [PosterPath(filePath: "")]
+    var posterLink2: [FilePath] = [FilePath(filePath: "")]
     let tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         configureTableView()
         configureHierarchy()
         configureLayout()
@@ -34,25 +35,39 @@ class ContentViewController: UIViewController {
         
         group.enter()
         DispatchQueue.global().async {
-            NetworkSimilarMovie.shared.callSimilarMovie(id: 940721) { result in
-                self.posterLink[0] = result
+            NewNetwork.shared.callMovie(api: .SimilarMovie(id: 940721)) { movie, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    guard let movie = movie else { return }
+                    self.posterLink[0] = movie
+                }
                 group.leave()
             }
         }
         group.enter()
         DispatchQueue.global().async {
-            NetworkRecommendMovie.shared.callrecommendedMovie(id: 940721) { result in
-                self.posterLink[1] = result
+            NewNetwork.shared.callMovie(api: .RecommendedMovie(id: 940721)) { movie, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    guard let movie = movie else { return }
+                    self.posterLink[1] = movie
+                }
                 group.leave()
             }
         }
         group.enter()
         DispatchQueue.global().async {
-            NetworkPosterImage.shared.callPosterImages() {
-                result in
-                self.posterLink2 = result
-                group.leave()
+            NewNetwork.shared.callPoster(api: .Posters(id: 940721)) { poster, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    guard let poster = poster else { return }
+                    self.posterLink2 = poster
+                }
             }
+            group.leave()
         }
         group.notify(queue: .main) {
             self.tableView.reloadData()
