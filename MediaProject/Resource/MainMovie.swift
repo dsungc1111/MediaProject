@@ -14,13 +14,23 @@ struct Content: Decodable {
 
 
 struct Results: Decodable {
-    let poster_path: String
+    let posterPath: String
     let title: String?
-    let release_date: String?
+    let releaseDate: String?
+    let backdropPath: String
 //    let genre_ids: [Int]
-    let vote_average: Double
+    let voteAverage: Double
 //    let overview: String
     let id: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case posterPath = "poster_path"
+        case title
+        case releaseDate = "release_date"
+        case backdropPath = "backdrop_path"
+        case voteAverage  = "vote_average"
+        case id
+    }
 }
 
 

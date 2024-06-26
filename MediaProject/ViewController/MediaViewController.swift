@@ -15,7 +15,7 @@ import Kingfisher
 class MediaViewController: UIViewController {
 
     var tableView = UITableView()
-    var contents: [Results] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,7 @@ class MediaViewController: UIViewController {
             .responseDecodable(of: Content.self) { response in
                 switch response.result {
                 case .success(let value):
-                    self.contents = value.results
+                    Data.contents = value.results
                     for i in 0..<value.results.count {
                         self.callCreditRequest(id: value.results[i].id)
                     }
@@ -88,11 +88,11 @@ class MediaViewController: UIViewController {
 }
 extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contents.count
+        return Data.contents.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MediaTableViewCell.identifier, for: indexPath) as! MediaTableViewCell
-        let data = contents[indexPath.row]
+        let data = Data.contents[indexPath.row]
         cell.configureCell(data: data)
         cell.descriptionLabel.text = ""
         for i in 0..<Data.list[indexPath.row].cast.count {
@@ -107,6 +107,9 @@ extension MediaViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
+        
+        DetailInfoViewController.getContents = Data.contents[indexPath.row]
+        
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

@@ -158,16 +158,16 @@ class MediaTableViewCell: UITableViewCell {
         }
     }
     func configureCell(data: Results) {
-        let string = "https://image.tmdb.org/t/p/w500\(data.poster_path)"
+        let string = "https://image.tmdb.org/t/p/w500\(data.posterPath)"
         let url = URL(string: string)
         posterImageView.kf.setImage(with: url)
         
-        if let releaseDate = data.release_date {
+        if let releaseDate = data.releaseDate {
             guard let convertDate = DateChange.shared.stringToDate(string: releaseDate) else { return  }
             let convertString = DateChange.shared.dateToString(date: convertDate)
             dateLabel.text = convertString
         }
-        rateNumberLabel.text = "\(String(format: "%.1f", data.vote_average))"
+        rateNumberLabel.text = "\(String(format: "%.1f", data.voteAverage))"
         titleLabel.text = data.title
     }
     
