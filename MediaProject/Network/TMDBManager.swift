@@ -10,12 +10,14 @@ import Alamofire
 
 enum TMDBManager {
     
+    case Credit(id: Int)
+    case TrendMovie
     case SimilarMovie(id: Int)
     case RecommendedMovie(id: Int)
     case Posters(id: Int)
     
     var baseURL: String {
-        return "https://api.themoviedb.org/3/"
+        return "https://api.themoviedb.org/3"
     }
     
     var endPoint: URL {
@@ -26,6 +28,10 @@ enum TMDBManager {
             return URL(string: baseURL + "/movie/\(id)/recommendations?language=ko-Kr&page=1")!
         case .Posters(let id):
             return URL(string: baseURL + "/movie/\(id)/images")!
+        case .TrendMovie:
+            return URL(string: baseURL + "/trending/movie/week")!
+        case .Credit(let id):
+            return URL(string: baseURL + "/movie/\(id)/credits")!
         }
     }
     
@@ -36,6 +42,10 @@ enum TMDBManager {
         
     var parameter: Parameters {
         switch self {
+        case .TrendMovie:
+            return ["api_key" : APIKey.movieKey]
+        case .Credit:
+            return ["language" : "ko-Kr", "api_key" : APIKey.movieKey]
         case .SimilarMovie(let id), .RecommendedMovie(let id):
             return ["language" : "ko-Kr", "page" : "1", "id" : id, "api_key" : APIKey.movieKey]
         case .Posters(let id):

@@ -35,7 +35,7 @@ class ContentViewController: UIViewController {
         
         group.enter()
         DispatchQueue.global().async {
-            NewNetwork.shared.callMovie(api: .SimilarMovie(id: 940721)) { movie, error in
+            NetworkContent.shared.callMovie(api: .SimilarMovie(id: 940721)) { movie, error in
                 if let error = error {
                     print(error)
                 } else {
@@ -47,7 +47,7 @@ class ContentViewController: UIViewController {
         }
         group.enter()
         DispatchQueue.global().async {
-            NewNetwork.shared.callMovie(api: .RecommendedMovie(id: 940721)) { movie, error in
+            NetworkContent.shared.callMovie(api: .RecommendedMovie(id: 940721)) { movie, error in
                 if let error = error {
                     print(error)
                 } else {
@@ -59,7 +59,7 @@ class ContentViewController: UIViewController {
         }
         group.enter()
         DispatchQueue.global().async {
-            NewNetwork.shared.callPoster(api: .Posters(id: 940721)) { poster, error in
+            NetworkContent.shared.callPoster(api: .Posters(id: 940721)) { poster, error in
                 if let error = error {
                     print(error)
                 } else {
@@ -72,7 +72,6 @@ class ContentViewController: UIViewController {
         group.notify(queue: .main) {
             self.tableView.reloadData()
         }
-        
     }
     
     func configureHierarchy() {
@@ -99,7 +98,6 @@ class ContentViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         navigationController?.navigationBar.layer.addBorder([.bottom], color: .systemGray4, width: 1)
     }
-    
 }
 extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -117,7 +115,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.tag = indexPath.row
         cell.collectionView.delegate = self
         cell.collectionView.dataSource = self
-        cell.collectionView.register(SimilarCollectionViewCell.self, forCellWithReuseIdentifier: SimilarCollectionViewCell.identifier)
+        cell.collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: ContentCollectionViewCell.identifier)
         cell.collectionView.reloadData()
         return cell
     }
@@ -138,7 +136,7 @@ extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimilarCollectionViewCell.identifier, for: indexPath) as? SimilarCollectionViewCell else { return SimilarCollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCollectionViewCell.identifier, for: indexPath) as? ContentCollectionViewCell else { return ContentCollectionViewCell() }
         
         if collectionView.tag < 2 {
             let data = posterLink[collectionView.tag][indexPath.row]

@@ -20,5 +20,5 @@ class BaseViewController: UIViewController {
     func configureHierarchy() {}
     func configureLayout() {}
     func configureView() {}
-
+    
 }

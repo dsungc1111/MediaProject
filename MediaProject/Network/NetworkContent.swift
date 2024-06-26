@@ -8,9 +8,9 @@
 import Foundation
 import Alamofire
 
-class NewNetwork {
+class NetworkContent {
     
-    static var shared = NewNetwork()
+    static var shared = NetworkContent()
     
     private init() {}
     

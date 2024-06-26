@@ -8,14 +8,11 @@
 import UIKit
 import SnapKit
 
-class SimilarCollectionViewCell: UICollectionViewCell {
-    
-   
+class ContentCollectionViewCell: UICollectionViewCell {
     
     let imageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.backgroundColor = .lightGray
         return image
     }()
     override init(frame: CGRect) {

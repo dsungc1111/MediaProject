@@ -12,5 +12,5 @@ struct Data {
     static var list: [MovieInfo] = []
     static var similarMovies: [MovieResults]?
     static var contents: [Results] = []
-//    static var dateFormatter = DateFormatter()
+
 }

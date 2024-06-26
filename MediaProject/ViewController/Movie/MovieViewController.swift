@@ -24,7 +24,7 @@ struct MoviewDetail: Decodable {
     let title: String
 }
 
-class MovieViewController: UIViewController {
+class MovieViewController: BaseViewController {
     
     var list: [MoviewDetail] = []
     var page = 1
@@ -49,8 +49,6 @@ class MovieViewController: UIViewController {
         navigationItem.title = "영화 스크롤"
         collectionView.prefetchDataSource = self
         collectionViewSet()
-        configureHierarchy()
-        configureLayout()
         callRequest()
         
     }
@@ -59,14 +57,12 @@ class MovieViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
-        
-        view.backgroundColor = .white
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(collectionView)
     }
-    func configureLayout() {
+    override func configureLayout() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }

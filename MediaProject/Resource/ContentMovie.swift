@@ -7,19 +7,6 @@
 
 import Foundation
 
-//struct Results: Decodable {
-//    let posterPath: String?
-//    
-//    enum CodingKeys: String, CodingKey {
-//        case posterPath = "poster_path"
-//    }
-//    
-//   
-//}
-//
-//struct Trending: Decodable {
-//    let results: [Results]
-//}
 struct MovieResults: Decodable {
     let posterPath: String?
     

@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct Content: Decodable {
-    let page: Int
-    let results: [Results]
-}
 
 
 struct Results: Decodable {
@@ -33,12 +29,19 @@ struct Results: Decodable {
     }
 }
 
+struct Content: Decodable {
+    let page: Int
+    let results: [Results]
+}
+
+
+
+
+struct Info: Decodable {
+    let name: String
+}
 
 struct MovieInfo: Decodable {
     let id: Int
     let cast: [Info]
-}
-
-struct Info: Decodable {
-    let name: String
 }

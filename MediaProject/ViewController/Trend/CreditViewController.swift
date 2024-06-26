@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class DetailInfoViewController: BaseViewController {
+class CreditViewController: BaseViewController {
     
     static var getContents = Results(posterPath: "", title: "", releaseDate: "", backdropPath: "", voteAverage: 0.0, id: 0)
     
@@ -45,11 +45,11 @@ class DetailInfoViewController: BaseViewController {
         }
     }
     override func configureView() {
-        let string = "https://image.tmdb.org/t/p/w500\(DetailInfoViewController.getContents.backdropPath)"
+        let string = "https://image.tmdb.org/t/p/w500\(CreditViewController.getContents.backdropPath)"
         let url = URL(string: string)
         imageView.kf.setImage(with: url)
         
-        movieTitle.text = DetailInfoViewController.getContents.title
+        movieTitle.text = CreditViewController.getContents.title
     }
     
     

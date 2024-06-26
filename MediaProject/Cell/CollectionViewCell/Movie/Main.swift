@@ -9,9 +9,9 @@ import UIKit
 
 
 class MovieCollectionViewCell: UICollectionViewCell {
-
+    
     let poster = {
-       let image = UIImageView()
+        let image = UIImageView()
         return image
     }()
     override init(frame: CGRect) {

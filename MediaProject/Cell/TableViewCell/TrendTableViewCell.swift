@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-class MediaTableViewCell: UITableViewCell {
+class TrendTableViewCell: UITableViewCell {
 
      var dateLabel = {
         let label = UILabel()
