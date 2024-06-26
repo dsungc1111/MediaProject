@@ -11,7 +11,6 @@ import Alamofire
 import Kingfisher
 
 
-
 class TrendViewController: BaseViewController {
     
     var tableView = UITableView()
@@ -27,6 +26,7 @@ class TrendViewController: BaseViewController {
     }
     func getTrend() {
         DispatchQueue.global().async {
+            
             NetworkTrend.shared.callTrendMovie(api: .TrendMovie) { movie, error in
                 if let error = error {
                     print(error)
@@ -34,6 +34,7 @@ class TrendViewController: BaseViewController {
                     guard let movie = movie else { return }
                     Data.contents = movie
                     let group = DispatchGroup()
+                    
                     for item in movie{
                         group.enter()
                         DispatchQueue.global().async {
@@ -89,7 +90,8 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let data = Data.contents[indexPath.row]
         cell.configureCell(data: data)
         cell.descriptionLabel.text = ""
-        for i in 0..<Data.list.count {
+        print(Data.list.count)
+        for i in 0..<Data.list[indexPath.row].cast.count {
             cell.descriptionLabel.text! +=  "\(Data.list[indexPath.row].cast[i].name), "
         }
         cell.selectionStyle = .none

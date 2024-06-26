@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B29AE5A2C295EA8006DB1FF /* NetworkTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE592C295EA8006DB1FF /* NetworkTrend.swift */; };
+		8B29AE5A2C295EA8006DB1FF /* NetworkForTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE592C295EA8006DB1FF /* NetworkForTrend.swift */; };
 		8B29AE5C2C296B77006DB1FF /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE5B2C296B77006DB1FF /* ContentTableViewCell.swift */; };
 		8B29AE5E2C29782F006DB1FF /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE5D2C29782F006DB1FF /* ContentCollectionViewCell.swift */; };
 		8B29AE662C297AB1006DB1FF /* ContentMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29AE652C297AB1006DB1FF /* ContentMovie.swift */; };
@@ -16,7 +16,7 @@
 		8B456EC32C2AFAFF003CFBD1 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EC22C2AFAFF003CFBD1 /* DateFormatter.swift */; };
 		8B456EC52C2B8544003CFBD1 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EC42C2B8544003CFBD1 /* CreditViewController.swift */; };
 		8B456EC82C2B8BDA003CFBD1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EC72C2B8BDA003CFBD1 /* BaseViewController.swift */; };
-		8B456ECE2C2BF2A8003CFBD1 /* NetworkContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ECD2C2BF2A8003CFBD1 /* NetworkContent.swift */; };
+		8B456ECE2C2BF2A8003CFBD1 /* NetworkForContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ECD2C2BF2A8003CFBD1 /* NetworkForContent.swift */; };
 		8B456ED02C2BF37A003CFBD1 /* TMDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ECF2C2BF37A003CFBD1 /* TMDBManager.swift */; };
 		8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646912C16E671001819B5 /* AppDelegate.swift */; };
 		8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646932C16E671001819B5 /* SceneDelegate.swift */; };
@@ -38,7 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B29AE592C295EA8006DB1FF /* NetworkTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTrend.swift; sourceTree = "<group>"; };
+		8B29AE592C295EA8006DB1FF /* NetworkForTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkForTrend.swift; sourceTree = "<group>"; };
 		8B29AE5B2C296B77006DB1FF /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		8B29AE5D2C29782F006DB1FF /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B29AE652C297AB1006DB1FF /* ContentMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMovie.swift; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		8B456EC22C2AFAFF003CFBD1 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		8B456EC42C2B8544003CFBD1 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
 		8B456EC72C2B8BDA003CFBD1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		8B456ECD2C2BF2A8003CFBD1 /* NetworkContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContent.swift; sourceTree = "<group>"; };
+		8B456ECD2C2BF2A8003CFBD1 /* NetworkForContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkForContent.swift; sourceTree = "<group>"; };
 		8B456ECF2C2BF37A003CFBD1 /* TMDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBManager.swift; sourceTree = "<group>"; };
 		8BD6468E2C16E671001819B5 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD646912C16E671001819B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,8 +84,8 @@
 		8B29AE582C295E83006DB1FF /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				8B29AE592C295EA8006DB1FF /* NetworkTrend.swift */,
-				8B456ECD2C2BF2A8003CFBD1 /* NetworkContent.swift */,
+				8B29AE592C295EA8006DB1FF /* NetworkForTrend.swift */,
+				8B456ECD2C2BF2A8003CFBD1 /* NetworkForContent.swift */,
 				8B456ECF2C2BF37A003CFBD1 /* TMDBManager.swift */,
 			);
 			path = Network;
@@ -141,8 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				8BD646952C16E671001819B5 /* TrendViewController.swift */,
-				8BD646BF2C17C4D9001819B5 /* ContentViewController.swift */,
 				8B456EC42C2B8544003CFBD1 /* CreditViewController.swift */,
+				8BD646BF2C17C4D9001819B5 /* ContentViewController.swift */,
 			);
 			path = Trend;
 			sourceTree = "<group>";
@@ -315,8 +315,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B29AE5A2C295EA8006DB1FF /* NetworkTrend.swift in Sources */,
-				8B456ECE2C2BF2A8003CFBD1 /* NetworkContent.swift in Sources */,
+				8B29AE5A2C295EA8006DB1FF /* NetworkForTrend.swift in Sources */,
+				8B456ECE2C2BF2A8003CFBD1 /* NetworkForContent.swift in Sources */,
 				8BD646B22C16F816001819B5 /* UIView+Extension.swift in Sources */,
 				8B456EC82C2B8BDA003CFBD1 /* BaseViewController.swift in Sources */,
 				8B456EC32C2AFAFF003CFBD1 /* DateFormatter.swift in Sources */,
