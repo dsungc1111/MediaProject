@@ -28,8 +28,7 @@ class DetailInfoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = DetailInfoViewController.getContents
-            .title
+        navigationItem.title = "출연/제작"
         
     }
     
