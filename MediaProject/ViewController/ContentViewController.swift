@@ -8,9 +8,6 @@
 import UIKit
 import SnapKit
 
-struct GetID {
-    let aa: [Int]
-}
 
 class ContentViewController: UIViewController {
     let themeLabel = {
@@ -23,6 +20,7 @@ class ContentViewController: UIViewController {
         [MovieResults(posterPath: "")],
         [MovieResults(posterPath: "")]
     ]
+    let getID = CreditViewController.getContents
     var posterLink2: [FilePath] = [FilePath(filePath: "")]
     let tableView = UITableView()
     override func viewDidLoad() {
@@ -39,7 +37,7 @@ class ContentViewController: UIViewController {
         
         group.enter()
         DispatchQueue.global().async {
-            NetworkContent.shared.callMovie(api: .SimilarMovie(id: 940721)) { movie, error in
+            NetworkContent.shared.callMovie(api: .SimilarMovie(id: self.getID.id)) { movie, error in
                 if let error = error {
                     print(error)
                 } else {
@@ -51,7 +49,7 @@ class ContentViewController: UIViewController {
         }
         group.enter()
         DispatchQueue.global().async {
-            NetworkContent.shared.callMovie(api: .RecommendedMovie(id: 940721)) { movie, error in
+            NetworkContent.shared.callMovie(api: .RecommendedMovie(id: self.getID.id)) { movie, error in
                 if let error = error {
                     print(error)
                 } else {
@@ -63,7 +61,7 @@ class ContentViewController: UIViewController {
         }
         group.enter()
         DispatchQueue.global().async {
-            NetworkContent.shared.callPoster(api: .Posters(id: 940721)) { poster, error in
+            NetworkContent.shared.callPoster(api: .Posters(id: self.getID.id)) { poster, error in
                 if let error = error {
                     print(error)
                 } else {

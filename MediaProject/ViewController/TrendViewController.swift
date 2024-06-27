@@ -22,10 +22,6 @@ class TrendViewController: BaseViewController {
         configureNavigationButton()
         getTrend()
     }
-    @objc func searchButtonTapped() {
-        let vc = ContentViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
     func getTrend() {
         let group = DispatchGroup()
         group.enter() // +1
@@ -69,7 +65,7 @@ class TrendViewController: BaseViewController {
     }
     func configureNavigationButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
     }
     override func configureHierarchy() {
         view.addSubview(tableView)
