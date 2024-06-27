@@ -42,6 +42,7 @@ class CreditViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "출연/제작"
         tableViewSetting()
+        
     }
    
     func tableViewSetting() {
@@ -115,12 +116,17 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CreditTableViewCell.identifier, for: indexPath) as? CreditTableViewCell else { return CreditTableViewCell() }
+       
             
-            let string = "https://image.tmdb.org/t/p/w500\(Self.getCredit.cast[indexPath.row].profilePath ?? "")"
-            let url = URL(string: string)
-            cell.profileImageView.kf.setImage(with: url)
+                let string = "https://image.tmdb.org/t/p/w500\(Self.getCredit.cast[indexPath.row].profilePath ?? "")"
+                let url = URL(string: string)
+                cell.profileImageView.kf.setImage(with: url)
+                
+            
+            
             return cell
         }
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {

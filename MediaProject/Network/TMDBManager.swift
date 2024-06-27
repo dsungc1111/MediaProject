@@ -23,9 +23,9 @@ enum TMDBManager {
     var endPoint: URL {
         switch self {
         case .SimilarMovie(let id):
-            return URL(string: baseURL + "/movie/\(id)/similar?language=ko-Kr&page=1")!
+            return URL(string: baseURL + "/movie/\(id)/similar")!
         case .RecommendedMovie(let id):
-            return URL(string: baseURL + "/movie/\(id)/recommendations?language=ko-Kr&page=1")!
+            return URL(string: baseURL + "/movie/\(id)/recommendations")!
         case .Posters(let id):
             return URL(string: baseURL + "/movie/\(id)/images")!
         case .TrendMovie:

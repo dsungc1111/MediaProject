@@ -13,7 +13,7 @@ import Kingfisher
 class TrendViewController: BaseViewController {
     
     var tableView = UITableView()
-    var creditList = MovieInfo(id: 0, cast: [])
+    var creditList: [MovieInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,34 +26,41 @@ class TrendViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     func getTrend() {
-        DispatchQueue.global().async {
+        let group = DispatchGroup()
+        group.enter() // +1
+        DispatchQueue.global().async(group: group) {
             NetworkTrend.shared.callTrendMovie(api: .TrendMovie) { movie, error in
                 if let error = error {
                     print(error)
+                    group.leave()
                 } else {
-                    guard let movie = movie else { return }
+                    guard let movie = movie else {
+                        group.leave()
+                        return
+                    }
                     Data.contents = movie
-                    let group = DispatchGroup()
-                    for item in movie{
+                    for item in movie {
                         group.enter()
-                        DispatchQueue.global().async() {
+                        DispatchQueue.global().sync {
                             NetworkTrend.shared.callCreditRequest(api: .Credit(id: item.id)) { credit, error in
                                 if let error = error {
                                     print(error)
                                 } else {
                                     guard let credit = credit else { return }
-                                    self.creditList = credit
+                                    self.creditList.append(credit)
+                                    print(item.id, credit.id)
                                 }
                                 group.leave()
                             }
                         }
-                        group.notify(queue: .main) {
-                            self.tableView.reloadData()
-                        }
                     }
+                    group.leave()
                 }
-                
             }
+        }
+
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
         }
     }
     func tableViewSet() {
@@ -84,11 +91,12 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let data = Data.contents[indexPath.row]
         cell.configureCell(data: data)
         cell.descriptionLabel.text = ""
-        for i in 0..<creditList.cast.count {
-            if i != creditList.cast.count - 1 {
-                cell.descriptionLabel.text! +=  "\(creditList.cast[i].name), "
+        
+        for i in 0..<creditList[indexPath.row].cast.count {
+            if i != creditList.count - 1 {
+                cell.descriptionLabel.text! +=  "\(creditList[indexPath.row].cast[i].name), "
             } else {
-                cell.descriptionLabel.text! +=  "\(creditList.cast[i].name)"
+                cell.descriptionLabel.text! +=  "\(creditList[indexPath.row].cast[i].name)"
             }
         }
         cell.selectionStyle = .none
@@ -101,8 +109,7 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = CreditViewController()
         navigationController?.pushViewController(vc, animated: true)
         CreditViewController.getContents = Data.contents[indexPath.row]
-        print(creditList)
-        CreditViewController.getCredit = creditList
+        CreditViewController.getCredit = creditList[indexPath.row]
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
