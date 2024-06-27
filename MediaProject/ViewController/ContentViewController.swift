@@ -116,10 +116,14 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.dataSource = self
         cell.collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: ContentCollectionViewCell.identifier)
         cell.collectionView.reloadData()
+        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
 extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataSource {

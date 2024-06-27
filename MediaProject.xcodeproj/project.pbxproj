@@ -36,8 +36,6 @@
 		8BD646D82C183A8B001819B5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646D72C183A8B001819B5 /* Alamofire */; };
 		8BD646DB2C183A98001819B5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD646DA2C183A98001819B5 /* SnapKit */; };
 		8BD646DD2C183CB3001819B5 /* MainMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646DC2C183CB3001819B5 /* MainMovie.swift */; };
-		8BD6473D2C190791001819B5 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6473C2C190791001819B5 /* MovieViewController.swift */; };
-		8BD647412C1907D1001819B5 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD647402C1907D1001819B5 /* Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,8 +67,6 @@
 		8BD646B72C171C93001819B5 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		8BD646BF2C17C4D9001819B5 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		8BD646DC2C183CB3001819B5 /* MainMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMovie.swift; sourceTree = "<group>"; };
-		8BD6473C2C190791001819B5 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
-		8BD647402C1907D1001819B5 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +116,6 @@
 		8B29AE632C297A77006DB1FF /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				8B456ED32C2C1011003CFBD1 /* Movie */,
 				8B29AE5D2C29782F006DB1FF /* ContentCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
@@ -129,9 +124,9 @@
 		8B29AE642C297A97006DB1FF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				8B456ED42C2C1350003CFBD1 /* Movie */,
 				8B29AE652C297AB1006DB1FF /* ContentMovie.swift */,
 				8B29AE672C297FD5006DB1FF /* Data.swift */,
+				8BD646DC2C183CB3001819B5 /* MainMovie.swift */,
 				8B456EC22C2AFAFF003CFBD1 /* DateFormatter.swift */,
 			);
 			path = Resource;
@@ -144,40 +139,6 @@
 				8B456ED72C2CE10C003CFBD1 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		8B456ED12C2C0E2D003CFBD1 /* Trend */ = {
-			isa = PBXGroup;
-			children = (
-				8BD646952C16E671001819B5 /* TrendViewController.swift */,
-				8B456EC42C2B8544003CFBD1 /* CreditViewController.swift */,
-				8BD646BF2C17C4D9001819B5 /* ContentViewController.swift */,
-			);
-			path = Trend;
-			sourceTree = "<group>";
-		};
-		8B456ED22C2C0E44003CFBD1 /* Movie */ = {
-			isa = PBXGroup;
-			children = (
-				8BD6473C2C190791001819B5 /* MovieViewController.swift */,
-			);
-			path = Movie;
-			sourceTree = "<group>";
-		};
-		8B456ED32C2C1011003CFBD1 /* Movie */ = {
-			isa = PBXGroup;
-			children = (
-				8BD647402C1907D1001819B5 /* Main.swift */,
-			);
-			path = Movie;
-			sourceTree = "<group>";
-		};
-		8B456ED42C2C1350003CFBD1 /* Movie */ = {
-			isa = PBXGroup;
-			children = (
-				8BD646DC2C183CB3001819B5 /* MainMovie.swift */,
-			);
-			path = Movie;
 			sourceTree = "<group>";
 		};
 		8BD646852C16E671001819B5 = {
@@ -237,8 +198,9 @@
 		8BD646BE2C17C4B0001819B5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8B456ED22C2C0E44003CFBD1 /* Movie */,
-				8B456ED12C2C0E2D003CFBD1 /* Trend */,
+				8BD646952C16E671001819B5 /* TrendViewController.swift */,
+				8B456EC42C2B8544003CFBD1 /* CreditViewController.swift */,
+				8BD646BF2C17C4D9001819B5 /* ContentViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -332,8 +294,6 @@
 				8BD646B82C171C93001819B5 /* APIKey.swift in Sources */,
 				8B456EC52C2B8544003CFBD1 /* CreditViewController.swift in Sources */,
 				8B456ED62C2CE0EC003CFBD1 /* OverViewTableViewCell.swift in Sources */,
-				8BD6473D2C190791001819B5 /* MovieViewController.swift in Sources */,
-				8BD647412C1907D1001819B5 /* Main.swift in Sources */,
 				8BD646AF2C16EED2001819B5 /* Protocol.swift in Sources */,
 				8BD646962C16E671001819B5 /* TrendViewController.swift in Sources */,
 				8B456ED02C2BF37A003CFBD1 /* TMDBManager.swift in Sources */,

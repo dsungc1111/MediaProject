@@ -75,7 +75,7 @@ class TrendTableViewCell: BaseTableViewCell {
     let detailButton = {
         var button = UIButton()
         button.setTitle("자세히 보기", for: .normal)
-        button.contentHorizontalAlignment = .right
+        button.contentHorizontalAlignment = .left
         button.titleLabel?.font = .systemFont(ofSize: 14)
         button.tintColor = .black
         button.setTitleColor(.black, for: .normal)

@@ -114,13 +114,16 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OverViewTableViewCell.identifier, for: indexPath) as? OverViewTableViewCell else { return OverViewTableViewCell() }
             cell.overviewLabel.text = Self.getContents.overview
+            cell.selectionStyle = .none
             return cell
 
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CreditTableViewCell.identifier, for: indexPath) as? CreditTableViewCell else { return CreditTableViewCell() }
             cell.configureCell(data: indexPath.row)
+            
             return cell
         }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -130,6 +133,8 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
     
 }
