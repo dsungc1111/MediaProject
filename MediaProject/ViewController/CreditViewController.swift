@@ -43,8 +43,14 @@ class CreditViewController: BaseViewController {
         navigationItem.title = "출연/제작"
         tableViewSetting()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "More", style: .plain, target: self, action: #selector(moreButtonTapped))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+
     }
-   
+    @objc func moreButtonTapped() {
+        let vc = ContentViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     func tableViewSetting() {
         tableView.delegate = self
         tableView.dataSource = self

@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+struct GetID {
+    let aa: [Int]
+}
+
 class ContentViewController: UIViewController {
     let themeLabel = {
         let label = UILabel()
@@ -116,7 +120,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.dataSource = self
         cell.collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: ContentCollectionViewCell.identifier)
         cell.collectionView.reloadData()
-        
+        cell.selectionStyle = .none
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

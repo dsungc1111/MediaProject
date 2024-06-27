@@ -19,7 +19,7 @@ class OverViewTableViewCell: BaseTableViewCell {
         label.textAlignment = .center
         return label
     }()
-    let moreButton = {
+    lazy var moreButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         button.tintColor = .black

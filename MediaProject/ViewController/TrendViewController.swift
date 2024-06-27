@@ -14,6 +14,7 @@ class TrendViewController: BaseViewController {
     
     var tableView = UITableView()
     var creditList: [MovieInfo] = []
+    var contents: [Results] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class TrendViewController: BaseViewController {
                         group.leave()
                         return
                     }
-                    Data.contents = movie
+                    self.contents = movie
                     for item in movie {
                         group.enter()
                         DispatchQueue.global().sync {
@@ -82,11 +83,11 @@ class TrendViewController: BaseViewController {
 }
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Data.contents.count
+        return contents.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier, for: indexPath) as! TrendTableViewCell
-        let data = Data.contents[indexPath.row]
+        let data = contents[indexPath.row]
         cell.configureCell(data: data)
         cell.descriptionLabel.text = ""
         for i in 0..<creditList[indexPath.row].cast.count {
@@ -105,7 +106,7 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = CreditViewController()
         navigationController?.pushViewController(vc, animated: true)
-        CreditViewController.getContents = Data.contents[indexPath.row]
+        CreditViewController.getContents = contents[indexPath.row]
         CreditViewController.getCredit = creditList[indexPath.row]
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
