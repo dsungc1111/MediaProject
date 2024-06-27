@@ -29,7 +29,6 @@ class NetworkTrend {
                 }
             }
     }
-    
     func callCreditRequest(api: TMDBManager, completionHanler: @escaping CompletionHandlerCredit) {
         AF.request(api.endPoint, method: .get, parameters: api.parameter, encoding: URLEncoding(destination: .queryString))
             .responseDecodable(of: MovieInfo.self) { response in
@@ -37,6 +36,7 @@ class NetworkTrend {
                 case .success(let value):
                     completionHanler(value, nil)
                 case .failure(_):
+                    print("d")
                     completionHanler(nil, "다시시도")
                 }
             }

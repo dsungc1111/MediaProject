@@ -43,7 +43,7 @@ enum TMDBManager {
     var parameter: Parameters {
         switch self {
         case .TrendMovie:
-            return ["api_key" : APIKey.movieKey]
+            return ["api_key" : APIKey.movieKey, "language" : "ko-Kr"]
         case .Credit:
             return ["language" : "ko-Kr", "api_key" : APIKey.movieKey]
         case .SimilarMovie(let id), .RecommendedMovie(let id):

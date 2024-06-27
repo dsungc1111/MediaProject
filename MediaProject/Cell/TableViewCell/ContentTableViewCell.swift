@@ -8,17 +8,14 @@
 import UIKit
 import SnapKit
 
-class ContentTableViewCell: UITableViewCell {
+class ContentTableViewCell: BaseTableViewCell {
 
     let themeLabel = {
         let label = UILabel()
-        label.text = "dfds"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
-    
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    
     static func layout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 120, height: 160)
@@ -28,22 +25,17 @@ class ContentTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         return layout
     }
-   
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureHeirarchy()
-        configureLayout()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func configureHeirarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(themeLabel)
         contentView.addSubview(collectionView)
     }
-    func configureLayout() {
+    override func configureLayout() {
         themeLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(5)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(20)
@@ -53,9 +45,5 @@ class ContentTableViewCell: UITableViewCell {
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide)
         }
-       
     }
-    
-
 }
-

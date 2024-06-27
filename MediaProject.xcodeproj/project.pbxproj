@@ -18,6 +18,9 @@
 		8B456EC82C2B8BDA003CFBD1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EC72C2B8BDA003CFBD1 /* BaseViewController.swift */; };
 		8B456ECE2C2BF2A8003CFBD1 /* NetworkForContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ECD2C2BF2A8003CFBD1 /* NetworkForContent.swift */; };
 		8B456ED02C2BF37A003CFBD1 /* TMDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ECF2C2BF37A003CFBD1 /* TMDBManager.swift */; };
+		8B456ED62C2CE0EC003CFBD1 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ED52C2CE0EC003CFBD1 /* OverViewTableViewCell.swift */; };
+		8B456ED82C2CE10C003CFBD1 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ED72C2CE10C003CFBD1 /* BaseTableViewCell.swift */; };
+		8B456EDE2C2D4F47003CFBD1 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EDD2C2D4F47003CFBD1 /* CreditTableViewCell.swift */; };
 		8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646912C16E671001819B5 /* AppDelegate.swift */; };
 		8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646932C16E671001819B5 /* SceneDelegate.swift */; };
 		8BD646962C16E671001819B5 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646952C16E671001819B5 /* TrendViewController.swift */; };
@@ -49,6 +52,9 @@
 		8B456EC72C2B8BDA003CFBD1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8B456ECD2C2BF2A8003CFBD1 /* NetworkForContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkForContent.swift; sourceTree = "<group>"; };
 		8B456ECF2C2BF37A003CFBD1 /* TMDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBManager.swift; sourceTree = "<group>"; };
+		8B456ED52C2CE0EC003CFBD1 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
+		8B456ED72C2CE10C003CFBD1 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		8B456EDD2C2D4F47003CFBD1 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
 		8BD6468E2C16E671001819B5 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD646912C16E671001819B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD646932C16E671001819B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +111,8 @@
 			children = (
 				8BD646AB2C16EB3C001819B5 /* TrendTableViewCell.swift */,
 				8B29AE5B2C296B77006DB1FF /* ContentTableViewCell.swift */,
+				8B456ED52C2CE0EC003CFBD1 /* OverViewTableViewCell.swift */,
+				8B456EDD2C2D4F47003CFBD1 /* CreditTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -133,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				8B456EC72C2B8BDA003CFBD1 /* BaseViewController.swift */,
+				8B456ED72C2CE10C003CFBD1 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -322,6 +331,7 @@
 				8B456EC32C2AFAFF003CFBD1 /* DateFormatter.swift in Sources */,
 				8BD646B82C171C93001819B5 /* APIKey.swift in Sources */,
 				8B456EC52C2B8544003CFBD1 /* CreditViewController.swift in Sources */,
+				8B456ED62C2CE0EC003CFBD1 /* OverViewTableViewCell.swift in Sources */,
 				8BD6473D2C190791001819B5 /* MovieViewController.swift in Sources */,
 				8BD647412C1907D1001819B5 /* Main.swift in Sources */,
 				8BD646AF2C16EED2001819B5 /* Protocol.swift in Sources */,
@@ -330,6 +340,8 @@
 				8B29AE682C297FD5006DB1FF /* Data.swift in Sources */,
 				8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */,
 				8BD646AC2C16EB3C001819B5 /* TrendTableViewCell.swift in Sources */,
+				8B456ED82C2CE10C003CFBD1 /* BaseTableViewCell.swift in Sources */,
+				8B456EDE2C2D4F47003CFBD1 /* CreditTableViewCell.swift in Sources */,
 				8B29AE702C2A3B95006DB1FF /* UIViewController+Extension.swift in Sources */,
 				8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */,
 				8BD646C02C17C4D9001819B5 /* ContentViewController.swift in Sources */,

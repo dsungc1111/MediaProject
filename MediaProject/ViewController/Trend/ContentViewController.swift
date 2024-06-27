@@ -73,7 +73,6 @@ class ContentViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
     func configureHierarchy() {
         view.addSubview(themeLabel)
         view.addSubview(tableView)
@@ -123,7 +122,6 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         return 200
     }
 }
-
 extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 0 {
@@ -134,10 +132,8 @@ extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataS
             return posterLink2.count
         }
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCollectionViewCell.identifier, for: indexPath) as? ContentCollectionViewCell else { return ContentCollectionViewCell() }
-        
         if collectionView.tag < 2 {
             let data = posterLink[collectionView.tag][indexPath.row]
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.posterPath ?? "")")
@@ -148,9 +144,6 @@ extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataS
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.filePath)")
             cell.imageView.kf.setImage(with: url)
         }
-        
         return cell
     }
-    
-    
 }
