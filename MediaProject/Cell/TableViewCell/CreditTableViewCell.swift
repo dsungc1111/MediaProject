@@ -28,7 +28,6 @@ class CreditTableViewCell: BaseTableViewCell {
     let characterName = {
         let name = UILabel()
         name.font = .systemFont(ofSize: 13)
-        name.text = "dffdsfdfdf/ dfdsfsdfdfs"
         name.textColor = .lightGray
         return name
     }()
@@ -65,6 +64,9 @@ class CreditTableViewCell: BaseTableViewCell {
         let string = "https://image.tmdb.org/t/p/w500\(CreditViewController.getCredit.cast[data].profilePath ?? "")"
         let url = URL(string: string)
         profileImageView.kf.setImage(with: url)
+        
+        realName.text = CreditViewController.getCredit.cast[data].name
+        characterName.text = CreditViewController.getCredit.cast[data].character
     }
 
 }

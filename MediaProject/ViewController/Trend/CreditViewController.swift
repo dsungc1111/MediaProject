@@ -50,6 +50,7 @@ class CreditViewController: BaseViewController {
         tableView.dataSource = self
         tableView.register(CreditTableViewCell.self, forCellReuseIdentifier: CreditTableViewCell.identifier)
         tableView.register(OverViewTableViewCell.self, forCellReuseIdentifier: OverViewTableViewCell.identifier)
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func configureHierarchy() {
@@ -114,27 +115,21 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OverViewTableViewCell.identifier, for: indexPath) as? OverViewTableViewCell else { return OverViewTableViewCell() }
             cell.overviewLabel.text = Self.getContents.overview
             return cell
+
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CreditTableViewCell.identifier, for: indexPath) as? CreditTableViewCell else { return CreditTableViewCell() }
-       
-            
-                let string = "https://image.tmdb.org/t/p/w500\(Self.getCredit.cast[indexPath.row].profilePath ?? "")"
-                let url = URL(string: string)
-                cell.profileImageView.kf.setImage(with: url)
-                
-            
-            
+            cell.configureCell(data: indexPath.row)
             return cell
         }
-        
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 200
-        } else {
+        if indexPath.section == 1 {
             return 100
         }
+        return UITableView.automaticDimension
     }
+   
     
     
 }

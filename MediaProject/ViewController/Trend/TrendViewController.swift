@@ -48,7 +48,6 @@ class TrendViewController: BaseViewController {
                                 } else {
                                     guard let credit = credit else { return }
                                     self.creditList.append(credit)
-                                    print(item.id, credit.id)
                                 }
                                 group.leave()
                             }
@@ -58,7 +57,6 @@ class TrendViewController: BaseViewController {
                 }
             }
         }
-
         group.notify(queue: .main) {
             self.tableView.reloadData()
         }
@@ -91,7 +89,6 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let data = Data.contents[indexPath.row]
         cell.configureCell(data: data)
         cell.descriptionLabel.text = ""
-        
         for i in 0..<creditList[indexPath.row].cast.count {
             if i != creditList.count - 1 {
                 cell.descriptionLabel.text! +=  "\(creditList[indexPath.row].cast[i].name), "
