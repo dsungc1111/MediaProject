@@ -19,6 +19,7 @@ class TrendViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "MovieTrend"
         tableViewSet()
         configureNavigationButton()
         getTrend()
