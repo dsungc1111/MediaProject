@@ -51,10 +51,11 @@ class TrendViewController: BaseViewController {
                     self.contents = movie
                     for item in movie {
                         group.enter()
-                        DispatchQueue.global().sync {
+                        DispatchQueue.global().async {
                             NetworkTrend.shared.callCreditRequest(api: .Credit(id: item.id)) { credit, error in
                                 if let error = error {
                                     print(error)
+                                    group.leave()
                                 } else {
                                     guard let credit = credit else { return }
                                     self.creditList.append(credit)
@@ -63,8 +64,9 @@ class TrendViewController: BaseViewController {
                             }
                         }
                     }
-                    group.leave()
+                    
                 }
+                group.leave()
             }
         }
         group.notify(queue: .main) {
@@ -99,6 +101,8 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let data = contents[indexPath.row]
         cell.configureCell(data: data)
         cell.descriptionLabel.text = ""
+        print(creditList[indexPath.row].cast.count)
+        
         for i in 0..<creditList[indexPath.row].cast.count {
             if i != creditList.count - 1 {
                 cell.descriptionLabel.text! +=  "\(creditList[indexPath.row].cast[i].name), "
@@ -110,12 +114,8 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         for j in 0..<idList.count {
             if contents[indexPath.row].genreIds[0] == idList[j].id {
                 cell.genreLabel.text = "#\(idList[j].name)"
-                
             }
-            
         }
-        
-        
         cell.selectionStyle = .none
         return cell
     }
