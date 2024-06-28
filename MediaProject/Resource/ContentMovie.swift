@@ -7,6 +7,14 @@
 
 import Foundation
 
+enum GetError: Error {
+    case failedRequest
+    case noData
+    case invalidResponse
+    case invalidData
+}
+
+
 struct MovieResults: Decodable {
     let posterPath: String?
     

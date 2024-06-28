@@ -13,44 +13,18 @@ class NetworkTrend {
     static var shared = NetworkTrend()
     
     private init() {}
-   
-    typealias CompletionHandler = ([Results]?, String?) -> Void
-    typealias CompletionHandlerCredit = (MovieInfo? , String?) -> Void
-    typealias CompletionHandlerID = ([IDs]?, String?) -> Void
     
+    func trending<T: Decodable>(api: TMDBManager, model:T.Type ,completionHandler: @escaping (T?, GetError?) -> Void ) {
+       
+        AF.request(api.endPoint, method: api.method, parameters: api.parameter, encoding: URLEncoding(destination: .queryString)).validate(statusCode: 200..<500) .responseDecodable(of: T.self) { response in
+            switch response.result {
+            case .success(let value):
+                completionHandler(value, nil)
+            case .failure(let error):
+                print(error)
+                completionHandler(nil, .failedRequest)
+            }
+        }
+    }
     
-    func callTrendMovie(api: TMDBManager, completionHandler: @escaping CompletionHandler) {
-        AF.request(api.endPoint, method: api.method, parameters: api.parameter, encoding: URLEncoding(destination: .queryString))
-            .responseDecodable(of: Content.self) { response in
-                switch response.result {
-                case .success(let value):
-                    completionHandler(value.results, nil)
-                case .failure(let error):
-                    print(error)
-                    completionHandler(nil, "다시 시도")
-                }
-            }
-    }
-    func callCreditRequest(api: TMDBManager, completionHanler: @escaping CompletionHandlerCredit) {
-        AF.request(api.endPoint, method: .get, parameters: api.parameter, encoding: URLEncoding(destination: .queryString))
-            .responseDecodable(of: MovieInfo.self) { response in
-                switch response.result {
-                case .success(let value):
-                    completionHanler(value, nil)
-                case .failure(_):
-                    completionHanler(nil, "다시시도")
-                }
-            }
-    }
-    func callMovieIds(api: TMDBManager,completionHanler: @escaping CompletionHandlerID) {
-        AF.request(api.endPoint, method: .get, parameters: api.parameter, encoding: URLEncoding(destination: .queryString))
-            .responseDecodable(of: Genre.self) { response in
-                switch response.result {
-                case .success(let value):
-                    completionHanler(value.genres, nil)
-                case .failure(_):
-                    completionHanler(nil, "다시시도")
-                }
-            }
-    }
 }

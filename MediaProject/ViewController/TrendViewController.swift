@@ -26,14 +26,13 @@ class TrendViewController: BaseViewController {
     }
     func getIDs() {
         DispatchQueue.global().async {
-            NetworkTrend.shared.callMovieIds(api: .genreID) { iDS, error in
+            NetworkTrend.shared.trending(api: .genreID, model: Genre.self) { iDS, error in
                 if let error = error {
                     print(error)
                 } else {
                     guard let ids = iDS else { return }
-                    self.idList = ids
+                    self.idList = ids.genres
                 }
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     
@@ -46,7 +45,9 @@ class TrendViewController: BaseViewController {
         let group = DispatchGroup()
         group.enter() // +1
         DispatchQueue.global().async(group: group) {
-            NetworkTrend.shared.callTrendMovie(api: .TrendMovie) { movie, error in
+            
+            
+            NetworkTrend.shared.trending(api: .TrendMovie, model: Content.self) { movie, error in
                 if let error = error {
                     print(error)
                     group.leave()
@@ -55,19 +56,20 @@ class TrendViewController: BaseViewController {
                         group.leave()
                         return
                     }
-                    self.contents = movie
-                    for item in movie {
+                    self.contents = movie.results
+                    for item in movie.results {
                         group.enter()
                         DispatchQueue.global().sync {
-                            NetworkTrend.shared.callCreditRequest(api: .Credit(id: item.id)) { credit, error in
-                                if let error = error {
-                                    print(error)
-                                } else {
-                                    guard let credit = credit else { return }
-                                    self.creditList.append(credit)
+                            
+                            NetworkTrend.shared.trending(api: .Credit(id: item.id), model: MovieInfo.self) { credit, error in
+                                    if let error = error {
+                                        print(error)
+                                    } else {
+                                        guard let credit = credit else { return }
+                                        self.creditList.append(credit)
+                                    }
+                                    group.leave()
                                 }
-                                group.leave()
-                            }
                         }
                     }
                     group.leave()

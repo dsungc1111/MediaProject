@@ -36,36 +36,39 @@ class ContentViewController: UIViewController {
         
         group.enter()
         DispatchQueue.global().async {
-            NetworkContent.shared.callMovie(api: .SimilarMovie(id: self.getID.id)) { movie, error in
+            NetworkTrend.shared.trending(api: .SimilarMovie(id: self.getID.id), model: Similar.self) { movie, error in
                 if let error = error {
                     print(error)
                 } else {
                     guard let movie = movie else { return }
-                    self.posterLink[0] = movie
+                    self.posterLink[0] = movie.results
                 }
                 group.leave()
+
             }
         }
         group.enter()
         DispatchQueue.global().async {
-            NetworkContent.shared.callMovie(api: .RecommendedMovie(id: self.getID.id)) { movie, error in
+            
+            NetworkTrend.shared.trending(api: .RecommendedMovie(id: self.getID.id), model: Similar.self) { movie, error in
                 if let error = error {
                     print(error)
                 } else {
                     guard let movie = movie else { return }
-                    self.posterLink[1] = movie
+                    self.posterLink[1] = movie.results
                 }
                 group.leave()
+
             }
         }
         group.enter()
         DispatchQueue.global().async {
-            NetworkContent.shared.callPoster(api: .Posters(id: self.getID.id)) { poster, error in
+            NetworkTrend.shared.trending(api: .Posters(id: self.getID.id), model: Poster.self) { poster, error in
                 if let error = error {
                     print(error)
                 } else {
                     guard let poster = poster else { return }
-                    self.posterLink2 = poster
+                    self.posterLink2 = poster.posters
                 }
             }
             group.leave()
