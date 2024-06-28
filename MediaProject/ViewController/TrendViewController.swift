@@ -36,7 +36,7 @@ class TrendViewController: BaseViewController {
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                
+                    
                 }
             }
         }
@@ -44,49 +44,42 @@ class TrendViewController: BaseViewController {
     }
     func getTrend() {
         let group = DispatchGroup()
-
         group.enter() // +1
-        
-        NetworkTrend.shared.callTrendMovie(api: .TrendMovie) { movie, error in
-            if let error = error {
-                print(error)
-                group.leave() // -1
-                return
-            }
-            
-            guard let movie = movie else {
-                group.leave() // -1
-                return
-            }
-            
-            self.contents = movie
-            group.leave() // -1
-            
-            for item in self.contents {
-                group.enter() // +1
-                NetworkTrend.shared.callCreditRequest(api: .Credit(id: item.id)) { credit, error in
-                    if let error = error {
-                        print(error)
-                        group.leave() // -1
+        DispatchQueue.global().async(group: group) {
+            NetworkTrend.shared.callTrendMovie(api: .TrendMovie) { movie, error in
+                if let error = error {
+                    print(error)
+                    group.leave()
+                } else {
+                    guard let movie = movie else {
+                        group.leave()
                         return
                     }
-                    
-                    guard let credit = credit else {
-                        group.leave() // -1
-                        return
+                    self.contents = movie
+                    for item in movie {
+                        group.enter()
+                        DispatchQueue.global().sync {
+                            NetworkTrend.shared.callCreditRequest(api: .Credit(id: item.id)) { credit, error in
+                                if let error = error {
+                                    print(error)
+                                } else {
+                                    guard let credit = credit else { return }
+                                    self.creditList.append(credit)
+                                }
+                                group.leave()
+                            }
+                        }
                     }
-                    
-                    self.creditList.append(credit)
-                    group.leave() // -1
+                    group.leave()
                 }
             }
         }
-
         group.notify(queue: .main) {
-                self.tableView.reloadData()
-            }
+            self.tableView.reloadData()
         }
-
+    }
+    
+    
     func tableViewSet() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -117,14 +110,14 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         cell.descriptionLabel.text = ""
         
         if indexPath.row < creditList.count {
-                 for i in 0..<creditList[indexPath.row].cast.count {
-                     if i != creditList[indexPath.row].cast.count - 1 {
-                         cell.descriptionLabel.text! += "\(creditList[indexPath.row].cast[i].name), "
-                     } else {
-                         cell.descriptionLabel.text! += "\(creditList[indexPath.row].cast[i].name)"
-                     }
-                 }
-             }
+            for i in 0..<creditList[indexPath.row].cast.count {
+                if i != creditList[indexPath.row].cast.count - 1 {
+                    cell.descriptionLabel.text! += "\(creditList[indexPath.row].cast[i].name), "
+                } else {
+                    cell.descriptionLabel.text! += "\(creditList[indexPath.row].cast[i].name)"
+                }
+            }
+        }
         for j in 0..<idList.count {
             if contents[indexPath.row].genreIds[0] == idList[j].id {
                 cell.genreLabel.text = "#\(idList[j].name)"
