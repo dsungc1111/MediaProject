@@ -37,10 +37,7 @@ class OverViewTableViewCell: BaseTableViewCell {
         moreButton.setImage(isMore ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down"), for: .normal)
         overviewLabel.numberOfLines = isMore ? 0 : 2
         invalidateIntrinsicContentSize()
-        
     }
-    
-    
     override func configureHierarchy() {
         contentView.addSubview(overviewLabel)
         contentView.addSubview(moreButton)

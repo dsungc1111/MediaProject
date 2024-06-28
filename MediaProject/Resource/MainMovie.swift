@@ -14,7 +14,7 @@ struct Results: Decodable {
     let title: String?
     let releaseDate: String?
     let backdropPath: String
-//    let genre_ids: [Int]
+    let genreIds: [Int]
     let voteAverage: Double
     let overview: String
     let id: Int
@@ -27,6 +27,7 @@ struct Results: Decodable {
         case voteAverage  = "vote_average"
         case id
         case overview
+        case genreIds = "genre_ids"
     }
 }
 
@@ -50,4 +51,23 @@ struct Info: Decodable {
 struct MovieInfo: Decodable {
     let id: Int
     let cast: [Info]
+}
+
+
+/*
+ "genres": [
+         {
+             "id": 28,
+             "name": "액션"
+         },
+         {
+ */
+
+struct IDs: Decodable {
+    let id: Int
+    let name: String
+}
+
+struct Genre: Decodable {
+    let genres: [IDs]
 }

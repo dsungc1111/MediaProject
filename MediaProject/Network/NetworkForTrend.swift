@@ -16,6 +16,8 @@ class NetworkTrend {
    
     typealias CompletionHandler = ([Results]?, String?) -> Void
     typealias CompletionHandlerCredit = (MovieInfo? , String?) -> Void
+    typealias CompletionHandlerID = ([IDs]?, String?) -> Void
+    
     
     func callTrendMovie(api: TMDBManager, completionHandler: @escaping CompletionHandler) {
         AF.request(api.endPoint, method: api.method, parameters: api.parameter, encoding: URLEncoding(destination: .queryString))
@@ -36,10 +38,19 @@ class NetworkTrend {
                 case .success(let value):
                     completionHanler(value, nil)
                 case .failure(_):
-                    print("d")
                     completionHanler(nil, "다시시도")
                 }
             }
-        
+    }
+    func callMovieIds(api: TMDBManager,completionHanler: @escaping CompletionHandlerID) {
+        AF.request(api.endPoint, method: .get, parameters: api.parameter, encoding: URLEncoding(destination: .queryString))
+            .responseDecodable(of: Genre.self) { response in
+                switch response.result {
+                case .success(let value):
+                    completionHanler(value.genres, nil)
+                case .failure(_):
+                    completionHanler(nil, "다시시도")
+                }
+            }
     }
 }

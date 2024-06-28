@@ -15,12 +15,25 @@ class TrendViewController: BaseViewController {
     var tableView = UITableView()
     var creditList: [MovieInfo] = []
     var contents: [Results] = []
+    var idList: [IDs] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewSet()
         configureNavigationButton()
         getTrend()
+        getIDs()
+    }
+    func getIDs() {
+        NetworkTrend.shared.callMovieIds(api: .genreID) { iDS, error in
+            if let error = error {
+                print(error)
+            } else {
+                guard let ids = iDS else { return }
+                self.idList = ids
+            }
+            self.tableView.reloadData()
+        }
     }
     func getTrend() {
         let group = DispatchGroup()
@@ -93,6 +106,16 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.descriptionLabel.text! +=  "\(creditList[indexPath.row].cast[i].name)"
             }
         }
+        
+        for j in 0..<idList.count {
+            if contents[indexPath.row].genreIds[0] == idList[j].id {
+                cell.genreLabel.text = "#\(idList[j].name)"
+                
+            }
+            
+        }
+        
+        
         cell.selectionStyle = .none
         return cell
     }

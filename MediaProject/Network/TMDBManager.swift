@@ -15,6 +15,7 @@ enum TMDBManager {
     case SimilarMovie(id: Int)
     case RecommendedMovie(id: Int)
     case Posters(id: Int)
+    case genreID
     
     var baseURL: String {
         return "https://api.themoviedb.org/3"
@@ -32,6 +33,8 @@ enum TMDBManager {
             return URL(string: baseURL + "/trending/movie/week")!
         case .Credit(let id):
             return URL(string: baseURL + "/movie/\(id)/credits")!
+        case .genreID:
+            return URL(string: baseURL + "/genre/movie/list")!
         }
     }
     
@@ -44,7 +47,7 @@ enum TMDBManager {
         switch self {
         case .TrendMovie:
             return ["api_key" : APIKey.movieKey, "language" : "ko-Kr"]
-        case .Credit:
+        case .Credit, .genreID:
             return ["language" : "ko-Kr", "api_key" : APIKey.movieKey]
         case .SimilarMovie(let id), .RecommendedMovie(let id):
             return ["language" : "ko-Kr", "page" : "1", "id" : id, "api_key" : APIKey.movieKey]

@@ -20,6 +20,7 @@ class TrendTableViewCell: BaseTableViewCell {
     var genreLabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 14)
+        label.text = "장르텍스트"
         return label
     }()
     var shadowView = {
@@ -70,12 +71,18 @@ class TrendTableViewCell: BaseTableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
         label.textColor = .darkGray
+        
+        return label
+    }()
+    let detailLabel = {
+        let label = UILabel()
+        label.text = "자세히 보기"
         return label
     }()
     let detailButton = {
-        var button = UIButton()
-        button.setTitle("자세히 보기", for: .normal)
-        button.contentHorizontalAlignment = .left
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.contentHorizontalAlignment = .right
         button.titleLabel?.font = .systemFont(ofSize: 14)
         button.tintColor = .black
         button.setTitleColor(.black, for: .normal)
@@ -98,10 +105,10 @@ class TrendTableViewCell: BaseTableViewCell {
         contentView.addSubview(rateNumberLabel)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
+        contentView.addSubview(detailLabel)
         contentView.addSubview(detailButton)
     }
     override func configureLayout() {
-       
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
             make.leading.equalTo(contentView.snp.leading).inset(30)
@@ -109,7 +116,7 @@ class TrendTableViewCell: BaseTableViewCell {
         }
         genreLabel.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.bottom).offset(5)
-            make.leading.equalTo(contentView.snp.leading).inset(20)
+            make.leading.equalTo(contentView.snp.leading).inset(30)
             make.width.equalTo(100)
         }
         shadowView.snp.makeConstraints { make in
@@ -149,6 +156,10 @@ class TrendTableViewCell: BaseTableViewCell {
             make.horizontalEdges.equalTo(posterImageView.snp.horizontalEdges).inset(10)
             make.height.equalTo(20)
         }
+        detailLabel.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(22)
+            make.leading.equalTo(posterView.snp.leading).inset(20)
+        }
         detailButton.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(posterImageView.snp.horizontalEdges).inset(20)
@@ -159,7 +170,6 @@ class TrendTableViewCell: BaseTableViewCell {
         let string = "https://image.tmdb.org/t/p/w500\(data.posterPath)"
         let url = URL(string: string)
         posterImageView.kf.setImage(with: url)
-        
         if let releaseDate = data.releaseDate {
             guard let convertDate = DateChange.shared.stringToDate(string: releaseDate) else { return  }
             let convertString = DateChange.shared.dateToString(date: convertDate)
@@ -168,7 +178,6 @@ class TrendTableViewCell: BaseTableViewCell {
         rateNumberLabel.text = "\(String(format: "%.1f", data.voteAverage))"
         titleLabel.text = data.title
     }
-    
-
+   
 }
 

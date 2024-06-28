@@ -10,7 +10,6 @@ import SnapKit
 
 class CreditTableViewCell: BaseTableViewCell {
 
-    
     let profileImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 5
@@ -31,7 +30,6 @@ class CreditTableViewCell: BaseTableViewCell {
         name.textColor = .lightGray
         return name
     }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -64,7 +62,6 @@ class CreditTableViewCell: BaseTableViewCell {
         let string = "https://image.tmdb.org/t/p/w500\(CreditViewController.getCredit.cast[data].profilePath ?? "")"
         let url = URL(string: string)
         profileImageView.kf.setImage(with: url)
-        
         realName.text = CreditViewController.getCredit.cast[data].name
         characterName.text = CreditViewController.getCredit.cast[data].character
     }

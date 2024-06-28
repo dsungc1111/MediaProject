@@ -10,7 +10,7 @@ import SnapKit
 
 class CreditViewController: BaseViewController {
     
-    static var getContents = Results(posterPath: "", title: "", releaseDate: "", backdropPath: "", voteAverage: 0.0, overview: "", id: 0)
+    static var getContents = Results(posterPath: "", title: "", releaseDate: "", backdropPath: "", genreIds: [], voteAverage: 0.0, overview: "", id: 0)
     static var getCredit = MovieInfo(id: 0, cast: [])
     let imageView = {
         let image = UIImageView()

@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 class DateChange {
     
     static let shared = DateChange()
