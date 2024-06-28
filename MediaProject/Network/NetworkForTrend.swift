@@ -4,7 +4,6 @@
 //
 //  Created by 최대성 on 6/24/24.
 //
-
 import Foundation
 import Alamofire
 
@@ -26,5 +25,4 @@ class NetworkTrend {
             }
         }
     }
-    
 }

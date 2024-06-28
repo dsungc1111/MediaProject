@@ -53,16 +53,6 @@ struct MovieInfo: Decodable {
     let cast: [Info]
 }
 
-
-/*
- "genres": [
-         {
-             "id": 28,
-             "name": "액션"
-         },
-         {
- */
-
 struct IDs: Decodable {
     let id: Int
     let name: String

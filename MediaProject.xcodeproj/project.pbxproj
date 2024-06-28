@@ -20,6 +20,8 @@
 		8B456ED82C2CE10C003CFBD1 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ED72C2CE10C003CFBD1 /* BaseTableViewCell.swift */; };
 		8B456EDE2C2D4F47003CFBD1 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EDD2C2D4F47003CFBD1 /* CreditTableViewCell.swift */; };
 		8B456EE22C2EC738003CFBD1 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EE12C2EC738003CFBD1 /* Literal.swift */; };
+		8B456EE42C2F1966003CFBD1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EE32C2F1966003CFBD1 /* SearchViewController.swift */; };
+		8B456EE72C2F1B2B003CFBD1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B456EE62C2F1B2B003CFBD1 /* IQKeyboardManagerSwift */; };
 		8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646912C16E671001819B5 /* AppDelegate.swift */; };
 		8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646932C16E671001819B5 /* SceneDelegate.swift */; };
 		8BD646962C16E671001819B5 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646952C16E671001819B5 /* TrendViewController.swift */; };
@@ -51,6 +53,7 @@
 		8B456ED72C2CE10C003CFBD1 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		8B456EDD2C2D4F47003CFBD1 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
 		8B456EE12C2EC738003CFBD1 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
+		8B456EE32C2F1966003CFBD1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8BD6468E2C16E671001819B5 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD646912C16E671001819B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD646932C16E671001819B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD646DB2C183A98001819B5 /* SnapKit in Frameworks */,
+				8B456EE72C2F1B2B003CFBD1 /* IQKeyboardManagerSwift in Frameworks */,
 				8BD646D52C183A82001819B5 /* Kingfisher in Frameworks */,
 				8BD646D82C183A8B001819B5 /* Alamofire in Frameworks */,
 			);
@@ -198,6 +202,7 @@
 				8BD646952C16E671001819B5 /* TrendViewController.swift */,
 				8B456EC42C2B8544003CFBD1 /* CreditViewController.swift */,
 				8BD646BF2C17C4D9001819B5 /* ContentViewController.swift */,
+				8B456EE32C2F1966003CFBD1 /* SearchViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				8BD646D42C183A82001819B5 /* Kingfisher */,
 				8BD646D72C183A8B001819B5 /* Alamofire */,
 				8BD646DA2C183A98001819B5 /* SnapKit */,
+				8B456EE62C2F1B2B003CFBD1 /* IQKeyboardManagerSwift */,
 			);
 			productName = MediaProject;
 			productReference = 8BD6468E2C16E671001819B5 /* MediaProject.app */;
@@ -255,6 +261,7 @@
 				8BD646D32C183A82001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				8BD646D62C183A8B001819B5 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8BD646D92C183A98001819B5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8B456EE52C2F1B2B003CFBD1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 8BD6468F2C16E671001819B5 /* Products */;
 			projectDirPath = "";
@@ -296,6 +303,7 @@
 				8B456ED02C2BF37A003CFBD1 /* TMDBManager.swift in Sources */,
 				8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */,
 				8BD646AC2C16EB3C001819B5 /* TrendTableViewCell.swift in Sources */,
+				8B456EE42C2F1966003CFBD1 /* SearchViewController.swift in Sources */,
 				8B456ED82C2CE10C003CFBD1 /* BaseTableViewCell.swift in Sources */,
 				8B456EDE2C2D4F47003CFBD1 /* CreditTableViewCell.swift in Sources */,
 				8B29AE702C2A3B95006DB1FF /* UIViewController+Extension.swift in Sources */,
@@ -525,6 +533,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8B456EE52C2F1B2B003CFBD1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.3;
+			};
+		};
 		8BD646D32C183A82001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -552,6 +568,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8B456EE62C2F1B2B003CFBD1 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B456EE52C2F1B2B003CFBD1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
 		8BD646D42C183A82001819B5 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8BD646D32C183A82001819B5 /* XCRemoteSwiftPackageReference "Kingfisher" */;

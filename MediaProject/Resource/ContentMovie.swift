@@ -14,7 +14,6 @@ enum GetError: Error {
     case invalidData
 }
 
-
 struct MovieResults: Decodable {
     let posterPath: String?
     

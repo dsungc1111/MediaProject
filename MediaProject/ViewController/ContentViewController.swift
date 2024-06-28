@@ -33,7 +33,6 @@ class ContentViewController: UIViewController {
     }
     func getMovies() {
         let group = DispatchGroup()
-        
         group.enter()
         DispatchQueue.global().async {
             NetworkTrend.shared.trending(api: .SimilarMovie(id: self.getID.id), model: Similar.self) { movie, error in
@@ -44,7 +43,7 @@ class ContentViewController: UIViewController {
                     self.posterLink[0] = movie.results
                 }
                 group.leave()
-
+                
             }
         }
         group.enter()
@@ -58,7 +57,7 @@ class ContentViewController: UIViewController {
                     self.posterLink[1] = movie.results
                 }
                 group.leave()
-
+                
             }
         }
         group.enter()
@@ -154,4 +153,6 @@ extension ContentViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         return cell
     }
+    
+    
 }

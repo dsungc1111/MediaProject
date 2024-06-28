@@ -89,7 +89,11 @@ class TrendViewController: BaseViewController {
     }
     func configureNavigationButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
+    }
+    @objc func searchButtonTapped() {
+        let vc = SearchViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     override func configureHierarchy() {
         view.addSubview(tableView)
