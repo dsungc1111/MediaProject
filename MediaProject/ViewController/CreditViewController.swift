@@ -12,6 +12,7 @@ class CreditViewController: BaseViewController {
     
     static var getContents = Results(posterPath: "", title: "", releaseDate: "", backdropPath: "", genreIds: [], voteAverage: 0.0, overview: "", id: 0)
     static var getCredit = MovieInfo(id: 0, cast: [])
+    var titleOfMovie = ""
     let imageView = {
         let image = UIImageView()
         image.clipsToBounds = true
@@ -49,6 +50,7 @@ class CreditViewController: BaseViewController {
     }
     @objc func moreButtonTapped() {
         let vc = ContentViewController()
+        vc.themeLabel.text = Self.getContents.title ?? "제목"
         navigationController?.pushViewController(vc, animated: true)
     }
     func tableViewSetting() {

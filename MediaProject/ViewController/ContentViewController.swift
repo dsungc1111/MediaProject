@@ -10,9 +10,8 @@ import SnapKit
 
 
 class ContentViewController: UIViewController {
-    let themeLabel = {
+    var themeLabel = {
         let label = UILabel()
-        label.text = "극한직업"
         label.font = .boldSystemFont(ofSize: 30)
         return label
     }()
@@ -107,11 +106,11 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContentTableViewCell.identifier, for: indexPath) as? ContentTableViewCell else { return ContentTableViewCell() }
         if indexPath.row == 0 {
-            cell.themeLabel.text = "비슷한 영화"
+            cell.themeLabel.text = Category.similar.rawValue
         } else if indexPath.row == 1 {
-            cell.themeLabel.text = "추천 영화"
+            cell.themeLabel.text = Category.recommended.rawValue
         } else {
-            cell.themeLabel.text = "포스터"
+            cell.themeLabel.text = Category.poster.rawValue
         }
         cell.collectionView.tag = indexPath.row
         cell.collectionView.delegate = self

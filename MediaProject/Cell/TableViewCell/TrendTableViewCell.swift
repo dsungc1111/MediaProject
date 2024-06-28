@@ -19,8 +19,7 @@ class TrendTableViewCell: BaseTableViewCell {
     }()
     var genreLabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 14)
-        label.text = "장르텍스트"
+        label.font = .boldSystemFont(ofSize: 15)
         return label
     }()
     var shadowView = {
