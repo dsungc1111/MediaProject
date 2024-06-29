@@ -13,7 +13,7 @@ struct Results: Decodable {
     let posterPath: String
     let title: String?
     let releaseDate: String?
-    let backdropPath: String
+    let backdropPath: String?
     let genreIds: [Int]
     let voteAverage: Double
     let overview: String
@@ -33,7 +33,7 @@ struct Results: Decodable {
 
 struct Content: Decodable {
     let page: Int
-    let results: [Results]
+    var results: [Results]
 }
 
 struct Info: Decodable {

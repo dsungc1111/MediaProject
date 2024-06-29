@@ -16,7 +16,7 @@ enum TMDBManager {
     case RecommendedMovie(id: Int)
     case Posters(id: Int)
     case genreID
-    case Search(query: String)
+    case Search(query: String, page: Int)
     
     var baseURL: String {
         return "https://api.themoviedb.org/3"
@@ -56,8 +56,8 @@ enum TMDBManager {
             return ["language" : "ko-Kr", "page" : "1", "id" : id, "api_key" : APIKey.movieKey]
         case .Posters(let id):
             return ["include_image_language" : "en", "api_key" : APIKey.movieKey, "id" : id]
-        case .Search(let query):
-            return [ "language" : "ko-Kr", "api_key" : APIKey.movieKey, "query" : query]
+        case .Search(let query, let page):
+            return [ "language" : "ko-Kr", "api_key" : APIKey.movieKey, "query" : query, "page" : page]
         }
     }
 }
