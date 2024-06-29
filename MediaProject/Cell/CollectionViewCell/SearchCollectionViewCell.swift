@@ -10,8 +10,12 @@ import SnapKit
 
 class SearchCollectionViewCell: BaseCollectionViewCell {
     
-    let poster = UIImageView()
-    
+    let poster =  {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
+        return image
+    }()
   
     override func configureHierarchy() {
         contentView.addSubview(poster)

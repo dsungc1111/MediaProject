@@ -10,13 +10,13 @@ import UIKit
 
 
 struct Results: Decodable {
-    let posterPath: String
+    let posterPath: String?
     let title: String?
     let releaseDate: String?
     let backdropPath: String?
     let genreIds: [Int]
     let voteAverage: Double
-    let overview: String
+    let overview: String?
     let id: Int
     
     enum CodingKeys: String, CodingKey {
@@ -29,11 +29,15 @@ struct Results: Decodable {
         case overview
         case genreIds = "genre_ids"
     }
+    
 }
 
 struct Content: Decodable {
     let page: Int
     var results: [Results]
+    
+
+
 }
 
 struct Info: Decodable {

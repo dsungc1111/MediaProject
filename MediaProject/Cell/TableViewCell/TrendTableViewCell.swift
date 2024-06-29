@@ -166,7 +166,7 @@ class TrendTableViewCell: BaseTableViewCell {
         }
     }
     func configureCell(data: Results) {
-        let string = "https://image.tmdb.org/t/p/w500\(data.posterPath)"
+        let string = "https://image.tmdb.org/t/p/w500\(data.posterPath ?? "")"
         let url = URL(string: string)
         posterImageView.kf.setImage(with: url)
         if let releaseDate = data.releaseDate {

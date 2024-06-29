@@ -47,7 +47,6 @@ class TrendViewController: BaseViewController {
         group.enter() // +1
         DispatchQueue.global().async(group: group) {
             
-            
             NetworkTrend.shared.trending(api: .TrendMovie, model: Content.self) { movie, error in
                 if let error = error {
                     print(error)

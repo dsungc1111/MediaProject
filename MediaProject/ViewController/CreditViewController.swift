@@ -90,11 +90,11 @@ class CreditViewController: BaseViewController {
       
     }
     override func configureView() {
-        let string = "https://image.tmdb.org/t/p/w500\(Self.getContents.backdropPath)"
+        let string = "https://image.tmdb.org/t/p/w500\(Self.getContents.backdropPath ?? "")"
         var url = URL(string: string)
         imageView.kf.setImage(with: url)
         movieTitle.text = "  \(Self.getContents.title ?? "제목")  "
-        let posterString = "https://image.tmdb.org/t/p/w500\(Self.getContents.posterPath)"
+        let posterString = "https://image.tmdb.org/t/p/w500\(Self.getContents.posterPath ?? "")"
         url = URL(string: posterString)
         posterImage.kf.setImage(with: url)
     }

@@ -59,16 +59,19 @@ class SearchViewController: BaseViewController {
                 print(error)
             }
             guard let movie = movie else { return }
+            
             if self.page == 1 {
-                self.contents.results = movie.results
+                self.contents = movie
             } else {
                 self.contents.results.append(contentsOf: movie.results)
             }
             self.collectionView.reloadData()
             if self.page == 1 {
-               self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-           }
+                self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            }
+            
         }
+        
     }
 }
 extension SearchViewController: UISearchBarDelegate {
@@ -85,7 +88,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell else { return SearchCollectionViewCell() }
-        let string = "https://image.tmdb.org/t/p/w500\(contents.results[indexPath.item].posterPath)"
+        let string = "https://image.tmdb.org/t/p/w500\(contents.results[indexPath.item].posterPath ?? "")"
         let url = URL(string: string)
         cell.poster.kf.setImage(with: url)
         return cell
@@ -101,6 +104,7 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
                 guard let text = searchBar.text else { return }
                 page += 1
                 getSearchMovie(text: text)
+                break
             }
         }
     }
