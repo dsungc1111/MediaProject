@@ -48,9 +48,9 @@ class ContentViewController: UIViewController {
         }
         group.enter()
         DispatchQueue.global().async {
-            
             NetworkTrend.shared.trending(api: .RecommendedMovie(id: self.getID.id), model: Similar.self) { movie, error in
                 if let error = error {
+                    self.networkAlert()
                     print(error)
                 } else {
                     guard let movie = movie else { return }
@@ -64,6 +64,7 @@ class ContentViewController: UIViewController {
         DispatchQueue.global().async {
             NetworkTrend.shared.trending(api: .Posters(id: self.getID.id), model: Poster.self) { poster, error in
                 if let error = error {
+                    self.networkAlert()
                     print(error)
                 } else {
                     guard let poster = poster else { return }

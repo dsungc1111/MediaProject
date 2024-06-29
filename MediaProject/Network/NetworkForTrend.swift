@@ -20,7 +20,6 @@ class NetworkTrend {
             case .success(let value):
                 completionHandler(value, nil)
             case .failure(let error):
-                print(error)
                 completionHandler(nil, .failedRequest)
             }
         }

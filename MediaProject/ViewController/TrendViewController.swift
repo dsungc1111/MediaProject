@@ -29,6 +29,7 @@ class TrendViewController: BaseViewController {
         DispatchQueue.global().async {
             NetworkTrend.shared.trending(api: .genreID, model: Genre.self) { iDS, error in
                 if let error = error {
+                    self.networkAlert()
                     print(error)
                 } else {
                     guard let ids = iDS else { return }
@@ -36,7 +37,6 @@ class TrendViewController: BaseViewController {
                 }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    
                 }
             }
         }
@@ -49,7 +49,8 @@ class TrendViewController: BaseViewController {
             
             NetworkTrend.shared.trending(api: .TrendMovie, model: Content.self) { movie, error in
                 if let error = error {
-                    print(error)
+                    print(error, "df")
+                    self.networkAlert()
                     group.leave()
                 } else {
                     guard let movie = movie else {

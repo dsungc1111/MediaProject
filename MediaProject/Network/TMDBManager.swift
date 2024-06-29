@@ -41,7 +41,7 @@ enum TMDBManager {
         }
     }
     
-        
+
     var method: HTTPMethod {
         return .get
     }

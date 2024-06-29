@@ -57,7 +57,9 @@ class SearchViewController: BaseViewController {
         NetworkTrend.shared.trending(api: .Search(query: text, page: page), model: Content.self) { movie, error in
             if let error = error {
                 print(error)
+                self.networkAlert()
             }
+            
             guard let movie = movie else { return }
             
             if self.page == 1 {
