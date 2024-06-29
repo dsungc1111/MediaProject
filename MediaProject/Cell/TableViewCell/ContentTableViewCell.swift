@@ -25,12 +25,6 @@ class ContentTableViewCell: BaseTableViewCell {
         layout.scrollDirection = .horizontal
         return layout
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     override func configureHierarchy() {
         contentView.addSubview(themeLabel)
         contentView.addSubview(collectionView)

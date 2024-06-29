@@ -19,8 +19,8 @@ class SearchViewController: BaseViewController {
         let layout = UICollectionViewFlowLayout()
         let sectionSpacing: CGFloat = 30
         let cellSpacing: CGFloat = 10
-        let width = UIScreen.main.bounds.width - (sectionSpacing + cellSpacing*2)
-        layout.itemSize = CGSize(width: width/4, height: width/3)
+        let width = UIScreen.main.bounds.width - (sectionSpacing + cellSpacing)
+        layout.itemSize = CGSize(width: width/2 - sectionSpacing, height: width/2)
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = cellSpacing
         layout.minimumLineSpacing = cellSpacing
@@ -36,7 +36,6 @@ class SearchViewController: BaseViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
-        collectionView.backgroundColor = .blue
     }
     
     override func configureHierarchy() {
@@ -54,12 +53,13 @@ class SearchViewController: BaseViewController {
     }
     
     func getSearchMovie(text : String) {
-        NetworkTrend.shared.trending(api: .Search(query: searchText), model: Content.self) { movie, error in
+        NetworkTrend.shared.trending(api: .Search(query: text), model: Content.self) { movie, error in
             if let error = error {
                 print(error)
             }
             guard let movie = movie else { return }
             self.contents = movie
+            self.collectionView.reloadData()
         }
     }
 }
@@ -80,6 +80,9 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell else { return SearchCollectionViewCell() }
                 
+        let string = "https://image.tmdb.org/t/p/w500\(contents.results[indexPath.item].posterPath)"
+        let url = URL(string: string)
+        cell.poster.kf.setImage(with: url)
                 
         return cell
     }

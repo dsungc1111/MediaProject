@@ -6,19 +6,21 @@
 //
 
 import UIKit
+import SnapKit
 
-class SearchCollectionViewCell: UICollectionViewCell {
+class SearchCollectionViewCell: BaseCollectionViewCell {
     
+    let poster = UIImageView()
     
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .lightGray
-        
+  
+    override func configureHierarchy() {
+        contentView.addSubview(poster)
+    }
+    override func configureLayout() {
+        poster.snp.makeConstraints { make in
+            make.edges.equalTo(contentView.safeAreaLayoutGuide)
+        }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
+    
 }

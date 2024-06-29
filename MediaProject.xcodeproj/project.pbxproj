@@ -23,6 +23,7 @@
 		8B456EE42C2F1966003CFBD1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EE32C2F1966003CFBD1 /* SearchViewController.swift */; };
 		8B456EE72C2F1B2B003CFBD1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B456EE62C2F1B2B003CFBD1 /* IQKeyboardManagerSwift */; };
 		8B456EE92C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EE82C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift */; };
+		8B456EED2C2FB602003CFBD1 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EEC2C2FB602003CFBD1 /* BaseCollectionViewCell.swift */; };
 		8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646912C16E671001819B5 /* AppDelegate.swift */; };
 		8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646932C16E671001819B5 /* SceneDelegate.swift */; };
 		8BD646962C16E671001819B5 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646952C16E671001819B5 /* TrendViewController.swift */; };
@@ -56,6 +57,7 @@
 		8B456EE12C2EC738003CFBD1 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
 		8B456EE32C2F1966003CFBD1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8B456EE82C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		8B456EEC2C2FB602003CFBD1 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		8BD6468E2C16E671001819B5 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD646912C16E671001819B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD646932C16E671001819B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				8B456EC72C2B8BDA003CFBD1 /* BaseViewController.swift */,
 				8B456ED72C2CE10C003CFBD1 /* BaseTableViewCell.swift */,
+				8B456EEC2C2FB602003CFBD1 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				8BD646AC2C16EB3C001819B5 /* TrendTableViewCell.swift in Sources */,
 				8B456EE42C2F1966003CFBD1 /* SearchViewController.swift in Sources */,
 				8B456EE92C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift in Sources */,
+				8B456EED2C2FB602003CFBD1 /* BaseCollectionViewCell.swift in Sources */,
 				8B456ED82C2CE10C003CFBD1 /* BaseTableViewCell.swift in Sources */,
 				8B456EDE2C2D4F47003CFBD1 /* CreditTableViewCell.swift in Sources */,
 				8B29AE702C2A3B95006DB1FF /* UIViewController+Extension.swift in Sources */,

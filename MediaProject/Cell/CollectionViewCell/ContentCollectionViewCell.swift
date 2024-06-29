@@ -8,23 +8,20 @@
 import UIKit
 import SnapKit
 
-class ContentCollectionViewCell: UICollectionViewCell {
+class ContentCollectionViewCell: BaseCollectionViewCell {
     
     let imageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         return image
     }()
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func configureHierarchy() {
         contentView.addSubview(imageView)
+    }
+    override func configureLayout() {
         imageView.snp.makeConstraints { make in
             make.edges.equalTo(contentView.safeAreaLayoutGuide)
         }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
 }
