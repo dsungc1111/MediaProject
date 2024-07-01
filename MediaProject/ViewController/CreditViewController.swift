@@ -37,6 +37,15 @@ final class CreditViewController: BaseViewController {
         image.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
         return image
     }()
+    private let playButton = {
+        let btn = UIButton()
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 50, weight: .light)
+        let image = UIImage(systemName: "play.circle", withConfiguration: imageConfig)
+        
+        btn.setImage(image, for: .normal)
+        btn.tintColor = .white
+        return btn
+    }()
     private let tableView = UITableView()
 
     override func viewDidLoad() {
@@ -66,6 +75,7 @@ final class CreditViewController: BaseViewController {
         view.addSubview(movieTitle)
         view.addSubview(posterImage)
         view.addSubview(tableView)
+        view.addSubview(playButton)
     }
     override func configureLayout() {
         imageView.snp.makeConstraints { make in
@@ -86,6 +96,11 @@ final class CreditViewController: BaseViewController {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        playButton.snp.makeConstraints { make in
+            make.top.equalTo(movieTitle.snp.bottom).offset(20)
+            make.leading.equalTo(posterImage.snp.trailing).offset(20)
+            make.size.equalTo(100)
         }
       
     }

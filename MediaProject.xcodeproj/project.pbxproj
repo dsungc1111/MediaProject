@@ -22,6 +22,7 @@
 		8B456EE72C2F1B2B003CFBD1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B456EE62C2F1B2B003CFBD1 /* IQKeyboardManagerSwift */; };
 		8B456EE92C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EE82C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift */; };
 		8B456EED2C2FB602003CFBD1 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EEC2C2FB602003CFBD1 /* BaseCollectionViewCell.swift */; };
+		8B456EFC2C32AB83003CFBD1 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EFB2C32AB83003CFBD1 /* VideoViewController.swift */; };
 		8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646912C16E671001819B5 /* AppDelegate.swift */; };
 		8BD646942C16E671001819B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646932C16E671001819B5 /* SceneDelegate.swift */; };
 		8BD646962C16E671001819B5 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD646952C16E671001819B5 /* TrendViewController.swift */; };
@@ -54,6 +55,7 @@
 		8B456EE32C2F1966003CFBD1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8B456EE82C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B456EEC2C2FB602003CFBD1 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		8B456EFB2C32AB83003CFBD1 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		8BD6468E2C16E671001819B5 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD646912C16E671001819B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD646932C16E671001819B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				8B456EC42C2B8544003CFBD1 /* CreditViewController.swift */,
 				8BD646BF2C17C4D9001819B5 /* ContentViewController.swift */,
 				8B456EE32C2F1966003CFBD1 /* SearchViewController.swift */,
+				8B456EFB2C32AB83003CFBD1 /* VideoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			files = (
 				8B29AE5A2C295EA8006DB1FF /* NetworkForTrend.swift in Sources */,
 				8BD646B22C16F816001819B5 /* UIView+Extension.swift in Sources */,
+				8B456EFC2C32AB83003CFBD1 /* VideoViewController.swift in Sources */,
 				8B456EC82C2B8BDA003CFBD1 /* BaseViewController.swift in Sources */,
 				8BD646B82C171C93001819B5 /* APIKey.swift in Sources */,
 				8B456EC52C2B8544003CFBD1 /* CreditViewController.swift in Sources */,
