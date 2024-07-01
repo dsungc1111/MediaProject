@@ -37,13 +37,13 @@ final class CreditViewController: BaseViewController {
         image.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
         return image
     }()
-    private let playButton = {
+    private lazy var playButton = {
         let btn = UIButton()
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 50, weight: .light)
         let image = UIImage(systemName: "play.circle", withConfiguration: imageConfig)
-        
         btn.setImage(image, for: .normal)
         btn.tintColor = .white
+        btn.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
         return btn
     }()
     private let tableView = UITableView()
@@ -56,6 +56,11 @@ final class CreditViewController: BaseViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "More", style: .plain, target: self, action: #selector(moreButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = .black
 
+    }
+    @objc func playButtonTapped() {
+        let vc = VideoViewController()
+        vc.navigationItem.title = Self.getContents.title
+        navigationController?.pushViewController(vc, animated: true)
     }
     @objc func moreButtonTapped() {
         let vc = ContentViewController()
