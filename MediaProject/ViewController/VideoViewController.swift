@@ -81,7 +81,11 @@ extension VideoViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let newButtonTitle = setVideoTitle(text: buttonTitle, num: movieTitleCount)
         
         cell.titleButton.setTitle(newButtonTitle, for: .normal)
-        
+        let string = "https://www.youtube.com/watch?v=" + videoLink[0].key
+        if let url = URL(string: string) {
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
         return cell
     }
     
