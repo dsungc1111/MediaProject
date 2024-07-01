@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 struct Results: Decodable {
     let posterPath: String?
     let title: String?
@@ -31,13 +29,9 @@ struct Results: Decodable {
     }
     
 }
-
 struct Content: Decodable {
     let page: Int
     var results: [Results]
-    
-
-
 }
 
 struct Info: Decodable {
@@ -51,17 +45,14 @@ struct Info: Decodable {
         case character
     }
 }
-
 struct MovieInfo: Decodable {
     let id: Int
     let cast: [Info]
 }
-
 struct IDs: Decodable {
     let id: Int
     let name: String
 }
-
 struct Genre: Decodable {
     let genres: [IDs]
 }
