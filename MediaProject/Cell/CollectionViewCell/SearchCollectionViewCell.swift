@@ -16,6 +16,7 @@ final class SearchCollectionViewCell: BaseCollectionViewCell {
         image.clipsToBounds = true
         return image
     }()
+    
   
     override func configureHierarchy() {
         contentView.addSubview(poster)

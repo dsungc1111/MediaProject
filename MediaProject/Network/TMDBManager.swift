@@ -51,9 +51,7 @@ enum TMDBManager {
         
     var parameter: Parameters {
         switch self {
-        case .TrendMovie:
-            return ["api_key" : APIKey.movieKey, "language" : "ko-Kr"]
-        case .Credit, .genreID:
+        case .TrendMovie, .Credit, .genreID:
             return ["language" : "ko-Kr", "api_key" : APIKey.movieKey]
         case .SimilarMovie(let id), .RecommendedMovie(let id):
             return ["language" : "ko-Kr", "page" : "1", "id" : id, "api_key" : APIKey.movieKey]
@@ -62,7 +60,7 @@ enum TMDBManager {
         case .Search(let query, let page):
             return [ "language" : "ko-Kr", "api_key" : APIKey.movieKey, "query" : query, "page" : page]
         case .Videos(let id):
-            return ["language" : "ko-Kr", "movie_id" : id]
+            return ["language" : "ko-Kr", "api_key" : APIKey.movieKey, "movie_id" : id]
         }
     }
 }

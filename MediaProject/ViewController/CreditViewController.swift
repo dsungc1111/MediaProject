@@ -55,11 +55,11 @@ final class CreditViewController: BaseViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "More", style: .plain, target: self, action: #selector(moreButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = .black
-
     }
     @objc func playButtonTapped() {
         let vc = VideoViewController()
         vc.navigationItem.title = Self.getContents.title
+        VideoViewController.movieId = Self.getCredit.id
         navigationController?.pushViewController(vc, animated: true)
     }
     @objc func moreButtonTapped() {

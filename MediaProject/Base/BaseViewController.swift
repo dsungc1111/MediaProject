@@ -16,6 +16,7 @@ class BaseViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureView()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     func configureHierarchy() {}
     func configureLayout() {}
