@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CreditTableViewCell: BaseTableViewCell {
+final class CreditTableViewCell: BaseTableViewCell {
 
     let profileImageView = {
         let image = UIImageView()

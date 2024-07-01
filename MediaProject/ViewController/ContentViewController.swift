@@ -9,29 +9,26 @@ import UIKit
 import SnapKit
 
 
-class ContentViewController: UIViewController {
+final class ContentViewController: BaseViewController {
     var themeLabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 30)
         return label
     }()
-    var posterLink: [[MovieResults]] = [
+    private var posterLink: [[MovieResults]] = [
         [MovieResults(posterPath: "")],
         [MovieResults(posterPath: "")]
     ]
-    let getID = CreditViewController.getContents
-    var posterLink2: [FilePath] = [FilePath(filePath: "")]
-    let tableView = UITableView()
+    private let getID = CreditViewController.getContents
+    private var posterLink2: [FilePath] = [FilePath(filePath: "")]
+    private let tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
         configureTableView()
-        configureHierarchy()
-        configureLayout()
         getMovies()
     }
-    func getMovies() {
+    private func getMovies() {
         let group = DispatchGroup()
         group.enter()
         DispatchQueue.global().async {
@@ -43,7 +40,6 @@ class ContentViewController: UIViewController {
                     self.posterLink[0] = movie.results
                 }
                 group.leave()
-                
             }
         }
         group.enter()
@@ -51,13 +47,11 @@ class ContentViewController: UIViewController {
             NetworkTrend.shared.trending(api: .RecommendedMovie(id: self.getID.id), model: Similar.self) { movie, error in
                 if let error = error {
                     self.networkAlert()
-                    print(error)
                 } else {
                     guard let movie = movie else { return }
                     self.posterLink[1] = movie.results
                 }
                 group.leave()
-                
             }
         }
         group.enter()
@@ -77,11 +71,11 @@ class ContentViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(themeLabel)
         view.addSubview(tableView)
     }
-    func configureLayout() {
+    override func configureLayout() {
         themeLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -92,7 +86,7 @@ class ContentViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    func configureTableView() {
+    private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ContentTableViewCell.self, forCellReuseIdentifier: ContentTableViewCell.identifier)
@@ -108,13 +102,8 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContentTableViewCell.identifier, for: indexPath) as? ContentTableViewCell else { return ContentTableViewCell() }
-        if indexPath.row == 0 {
-            cell.themeLabel.text = Category.similar.rawValue
-        } else if indexPath.row == 1 {
-            cell.themeLabel.text = Category.recommended.rawValue
-        } else {
-            cell.themeLabel.text = Category.poster.rawValue
-        }
+        
+        cell.configureCell(data: indexPath)
         cell.collectionView.tag = indexPath.row
         cell.collectionView.delegate = self
         cell.collectionView.dataSource = self

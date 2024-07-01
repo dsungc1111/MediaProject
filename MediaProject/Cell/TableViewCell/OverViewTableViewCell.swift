@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-class OverViewTableViewCell: BaseTableViewCell {
+final class OverViewTableViewCell: BaseTableViewCell {
 
     var isMore: Bool = false
     let overviewLabel = {

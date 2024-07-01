@@ -10,13 +10,13 @@ import IQKeyboardManagerSwift
 import SnapKit
 
 
-class SearchViewController: BaseViewController {
-
-    let searchBar = UISearchBar()
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: CollectionViewLayout())
-    var page = 1
+final class SearchViewController: BaseViewController {
     
-    static func CollectionViewLayout() -> UICollectionViewLayout{
+    private let searchBar = UISearchBar()
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: CollectionViewLayout())
+    private var page = 1
+    
+    private static func CollectionViewLayout() -> UICollectionViewLayout{
         let layout = UICollectionViewFlowLayout()
         let sectionSpacing: CGFloat = 30
         let cellSpacing: CGFloat = 10
@@ -28,18 +28,16 @@ class SearchViewController: BaseViewController {
         layout.sectionInset = UIEdgeInsets(top: sectionSpacing, left: sectionSpacing, bottom: sectionSpacing, right: sectionSpacing)
         return layout
     }
-    var contents = Content(page: 0, results: [])
-    var searchText = ""
+    private var contents = Content(page: 0, results: [])
+    private var searchText = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
         searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.prefetchDataSource = self
         collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
     }
-    
     override func configureHierarchy() {
         view.addSubview(searchBar)
         view.addSubview(collectionView)
@@ -53,15 +51,13 @@ class SearchViewController: BaseViewController {
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    func getSearchMovie(text : String) {
+    private func getSearchMovie(text : String) {
         NetworkTrend.shared.trending(api: .Search(query: text, page: page), model: Content.self) { movie, error in
             if let error = error {
                 print(error)
                 self.networkAlert()
             }
-            
             guard let movie = movie else { return }
-            
             if self.page == 1 {
                 self.contents = movie
             } else {
@@ -71,9 +67,7 @@ class SearchViewController: BaseViewController {
             if self.page == 1 {
                 self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
             }
-            
         }
-        
     }
 }
 extension SearchViewController: UISearchBarDelegate {
@@ -87,7 +81,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.contents.results.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell else { return SearchCollectionViewCell() }
         let string = "https://image.tmdb.org/t/p/w500\(contents.results[indexPath.item].posterPath ?? "")"
@@ -95,10 +88,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.poster.kf.setImage(with: url)
         return cell
     }
-    
-    
 }
-
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for item in indexPaths {

@@ -25,8 +25,6 @@ struct MovieResults: Decodable {
 struct Similar: Decodable {
     let results: [MovieResults]
 }
-
-
 struct FilePath: Decodable {
     let filePath: String
     

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SearchCollectionViewCell: BaseCollectionViewCell {
+final class SearchCollectionViewCell: BaseCollectionViewCell {
     
     let poster =  {
         let image = UIImageView()

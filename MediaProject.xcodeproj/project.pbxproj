@@ -19,7 +19,6 @@
 		8B456ED62C2CE0EC003CFBD1 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ED52C2CE0EC003CFBD1 /* OverViewTableViewCell.swift */; };
 		8B456ED82C2CE10C003CFBD1 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456ED72C2CE10C003CFBD1 /* BaseTableViewCell.swift */; };
 		8B456EDE2C2D4F47003CFBD1 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EDD2C2D4F47003CFBD1 /* CreditTableViewCell.swift */; };
-		8B456EE22C2EC738003CFBD1 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EE12C2EC738003CFBD1 /* Literal.swift */; };
 		8B456EE42C2F1966003CFBD1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EE32C2F1966003CFBD1 /* SearchViewController.swift */; };
 		8B456EE72C2F1B2B003CFBD1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B456EE62C2F1B2B003CFBD1 /* IQKeyboardManagerSwift */; };
 		8B456EE92C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B456EE82C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift */; };
@@ -54,7 +53,6 @@
 		8B456ED52C2CE0EC003CFBD1 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		8B456ED72C2CE10C003CFBD1 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		8B456EDD2C2D4F47003CFBD1 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
-		8B456EE12C2EC738003CFBD1 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
 		8B456EE32C2F1966003CFBD1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8B456EE82C2F1CF2003CFBD1 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B456EEC2C2FB602003CFBD1 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 				8B29AE652C297AB1006DB1FF /* ContentMovie.swift */,
 				8BD646DC2C183CB3001819B5 /* MainMovie.swift */,
 				8B456EC22C2AFAFF003CFBD1 /* DateFormatter.swift */,
-				8B456EE12C2EC738003CFBD1 /* Literal.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -304,7 +301,6 @@
 				8B456EC52C2B8544003CFBD1 /* CreditViewController.swift in Sources */,
 				8B456ED62C2CE0EC003CFBD1 /* OverViewTableViewCell.swift in Sources */,
 				8BD646AF2C16EED2001819B5 /* Protocol.swift in Sources */,
-				8B456EE22C2EC738003CFBD1 /* Literal.swift in Sources */,
 				8BD646962C16E671001819B5 /* TrendViewController.swift in Sources */,
 				8B456ED02C2BF37A003CFBD1 /* TMDBManager.swift in Sources */,
 				8BD646922C16E671001819B5 /* AppDelegate.swift in Sources */,

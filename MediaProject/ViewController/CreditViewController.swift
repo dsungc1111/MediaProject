@@ -8,18 +8,18 @@
 import UIKit
 import SnapKit
 
-class CreditViewController: BaseViewController {
+final class CreditViewController: BaseViewController {
     
     static var getContents = Results(posterPath: "", title: "", releaseDate: "", backdropPath: "", genreIds: [], voteAverage: 0.0, overview: "", id: 0)
     static var getCredit = MovieInfo(id: 0, cast: [])
-    var titleOfMovie = ""
-    let imageView = {
+    private var titleOfMovie = ""
+    private let imageView = {
         let image = UIImageView()
         image.clipsToBounds = true
         image.contentMode = .scaleToFill
         return image
     }()
-    let movieTitle = {
+    private let movieTitle = {
         let title = UILabel()
         title.font = .boldSystemFont(ofSize: 24)
         title.textColor = .white
@@ -28,7 +28,7 @@ class CreditViewController: BaseViewController {
         title.clipsToBounds = true
         return title
     }()
-    let posterImage = {
+    private let posterImage = {
         let image = UIImageView()
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
@@ -37,7 +37,7 @@ class CreditViewController: BaseViewController {
         image.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
         return image
     }()
-    let tableView = UITableView()
+    private let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class CreditViewController: BaseViewController {
         vc.themeLabel.text = Self.getContents.title ?? "제목"
         navigationController?.pushViewController(vc, animated: true)
     }
-    func tableViewSetting() {
+    private func tableViewSetting() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CreditTableViewCell.self, forCellReuseIdentifier: CreditTableViewCell.identifier)

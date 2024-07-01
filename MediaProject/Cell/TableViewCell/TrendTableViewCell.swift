@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-class TrendTableViewCell: BaseTableViewCell {
+final class TrendTableViewCell: BaseTableViewCell {
 
      var dateLabel = {
         let label = UILabel()
@@ -177,6 +177,5 @@ class TrendTableViewCell: BaseTableViewCell {
         rateNumberLabel.text = "\(String(format: "%.1f", data.voteAverage))"
         titleLabel.text = data.title
     }
-   
 }
 

@@ -10,12 +10,12 @@ import SnapKit
 import Alamofire
 import Kingfisher
 
-class TrendViewController: BaseViewController {
+final class TrendViewController: BaseViewController {
     
-    var tableView = UITableView()
-    var creditList: [MovieInfo] = []
-    var contents: [Results] = []
-    var idList: [IDs] = []
+    private var tableView = UITableView()
+    private var creditList: [MovieInfo] = []
+    private var contents: [Results] = []
+    private var idList: [IDs] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class TrendViewController: BaseViewController {
         getTrend()
         getIDs()
     }
-    func getIDs() {
+    private func getIDs() {
         DispatchQueue.global().async {
             NetworkTrend.shared.trending(api: .genreID, model: Genre.self) { iDS, error in
                 if let error = error {
@@ -42,11 +42,10 @@ class TrendViewController: BaseViewController {
         }
         
     }
-    func getTrend() {
+    private func getTrend() {
         let group = DispatchGroup()
         group.enter() // +1
         DispatchQueue.global().async(group: group) {
-            
             NetworkTrend.shared.trending(api: .TrendMovie, model: Content.self) { movie, error in
                 if let error = error {
                     print(error, "df")
@@ -61,7 +60,6 @@ class TrendViewController: BaseViewController {
                     for item in movie.results {
                         group.enter()
                         DispatchQueue.global().sync {
-                            
                             NetworkTrend.shared.trending(api: .Credit(id: item.id), model: MovieInfo.self) { credit, error in
                                     if let error = error {
                                         print(error)
@@ -81,14 +79,12 @@ class TrendViewController: BaseViewController {
             self.tableView.reloadData()
         }
     }
-    
-    
-    func tableViewSet() {
+    private func tableViewSet() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(TrendTableViewCell.self, forCellReuseIdentifier: TrendTableViewCell.identifier)
     }
-    func configureNavigationButton() {
+    private func configureNavigationButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
     }

@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 
-class ContentTableViewCell: BaseTableViewCell {
-
+final class ContentTableViewCell: BaseTableViewCell {
+    
+    enum Category: String {
+        case similar = "비슷한 영화"
+        case recommended = "추천 영화"
+        case poster = "포스터"
+    }
+    
     let themeLabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 20)
@@ -39,5 +45,14 @@ class ContentTableViewCell: BaseTableViewCell {
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide)
         }
+    }
+   func configureCell(data: IndexPath) {
+       if data.row == 0 {
+           themeLabel.text = Category.similar.rawValue
+       } else if data.row == 1 {
+           themeLabel.text = Category.recommended.rawValue
+       } else {
+           themeLabel.text = Category.poster.rawValue
+       }
     }
 }
