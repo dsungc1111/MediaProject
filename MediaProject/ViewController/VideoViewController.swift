@@ -22,7 +22,7 @@ final class VideoViewController: BaseViewController {
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     private static func layout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 40)
+        layout.itemSize = CGSize(width: 200, height: 40)
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
@@ -39,6 +39,7 @@ final class VideoViewController: BaseViewController {
         collectionView.register(VideoCollectionViewCell.self, forCellWithReuseIdentifier: VideoCollectionViewCell.identifier)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .black
+        print(Self.movieId)
         callRequest()
     }
     override func configureHierarchy() {
@@ -76,30 +77,26 @@ extension VideoViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier, for: indexPath) as? VideoCollectionViewCell else { return VideoCollectionViewCell() }
-        let movieTitleCount = (navigationItem.title?.count ?? 0) + 3
-        let buttonTitle = videoLink[indexPath.item].name
-        let newButtonTitle = setVideoTitle(text: buttonTitle, num: movieTitleCount)
-        
-        cell.titleButton.setTitle(newButtonTitle, for: .normal)
-        let string = "https://www.youtube.com/watch?v=" + videoLink[0].key
-        if let url = URL(string: string) {
-            let request = URLRequest(url: url)
-            webView.load(request)
+        if videoLink[indexPath.item].key.count != 0 {
+            
+            let buttonTitle = videoLink[indexPath.item].name
+            
+            cell.titleButton.setTitle(buttonTitle, for: .normal)
+            let string = "https://www.youtube.com/watch?v=" + videoLink[0].key
+            if let url = URL(string: string) {
+                let request = URLRequest(url: url)
+                webView.load(request)
+            }
+        } else {
+            print("0개에요")
         }
         return cell
     }
-    
-    private func setVideoTitle(text: String, num: Int) -> String {
-        let start = text.index(text.startIndex, offsetBy: num)
-        let end = text.index(text.startIndex, offsetBy: text.count-1)
-        let newText = text[start...end]
-        return String(newText)
-    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let string = "https://www.youtube.com/watch?v=" + videoLink[indexPath.item].key
+        
         guard let url = URL(string: string) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
     }
-    
 }

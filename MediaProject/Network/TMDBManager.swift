@@ -60,7 +60,7 @@ enum TMDBManager {
         case .Search(let query, let page):
             return [ "language" : "ko-Kr", "api_key" : APIKey.movieKey, "query" : query, "page" : page]
         case .Videos(let id):
-            return ["language" : "ko-Kr", "api_key" : APIKey.movieKey, "movie_id" : id]
+            return ["api_key" : APIKey.movieKey, "movie_id" : id]
         }
     }
 }
